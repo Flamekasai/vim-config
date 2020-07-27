@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='G:/cosas_nuestras/programas/vim/vimfiles/pack/coc/opt/coc'
+let g:netrw_dirhist_1='G:/cosas_nuestras/programas/vim/vimfiles/pack/coc/opt'
+let g:netrw_dirhist_0='G:/cosas_nuestras/programas/vim/vimfiles/pack/coc'
+let g:netrw_dirhist_9='G:/cosas_nuestras/programas/vim/vimfiles/pack/coc/opt/coc/autoload'
+let g:netrw_dirhist_8='G:/cosas_nuestras/programas/vim/vimfiles/pack/coc/opt/coc'
+let g:netrw_dirhist_7='G:/cosas_nuestras/programas/vim/vimfiles/pack/coc/opt'
+let g:netrw_dirhist_6='G:/cosas_nuestras/programas/vim/vimfiles/pack/coc'
+let g:netrw_dirhist_5='G:/insti/dam2/intermodular/DBFiles'
+let g:netrw_dirhist_4='G:/insti/dam2/intermodular'
+let g:netrw_dirhist_3='G:/insti/dam2'
