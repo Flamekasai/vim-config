@@ -363,11 +363,11 @@ let mapleader=" "
     packadd! vim-surround
     packadd! vim-unimpaired
 
-    packadd! tabular
+    packadd! vim-tabular
     packadd! vim-polyglot
 
     " CtrlP
-    packadd! ctrlp
+    packadd! vim-ctrlp
     let g:ctrlp_map=''
     nnoremap <silent> <C-P>p :CtrlP<CR>
     nnoremap <silent> <C-P>b :CtrlPBuffer<CR>
@@ -375,7 +375,7 @@ let mapleader=" "
     nnoremap <silent> <C-P>c :CtrlPCurWD<CR>
 
     " Emmet
-    packadd! emmet
+    packadd! vim-emmet
     let g:user_emmet_install_global = 0
     augroup EmmetConfig
         autocmd! EmmetConfig
@@ -393,14 +393,14 @@ let mapleader=" "
     let g:netrw_browse_split=0 " Open files in the previous window.
 
     " NerdTREE
-    packadd! nerdtree
+    packadd! vim-nerdtree
     let NERDTreeHijackNetrw=1
     let NERDTreeBookmarksFile=expand('<sfile>:p:h') . "/vimfiles/tmpfiles/.NERDTreeBookmarks"
     let NERDTreeDirArrowExpandable="+"
     let NERDTreeDirArrowCollapsible="-"
 
     " Vimwiki
-    packadd! vimwiki
+    packadd! vim-wiki
     let g:vimwiki_list = [{'path': expand('<sfile>:p:h') . '/vimfiles/vimwiki/folder1/',
                 \ 'path_html': expand('<sfile>:p:h') . '/vimfiles/vimwiki/folder1/html/',
                 \ 'auto_export': 1}]
