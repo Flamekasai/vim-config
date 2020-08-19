@@ -3,6 +3,11 @@ if &compatible
     set nocompatible
 endif
 
+" Set folders to use vim-config folder ( git )
+set runtimepath^=$VIM/vim-config/vimfiles
+set runtimepath+=$VIM/vim-config/vimfiles/after
+let &packpath=&runtimepath
+
 " Set only the messages in english
 language messages en_US.utf8
 
@@ -213,17 +218,17 @@ let mapleader=" "
 " === Reading and writing files ================================== {{{
 
     " Vim info file. for Reference -> 'viminfo'
-    execute "set viminfo=\'100,<50,s10,h,rA:,rB:,n" . expand('<sfile>:p:h') . '/vimfiles/tmpfiles/viminfo'
+    execute "set viminfo=\'100,<50,s10,h,rA:,rB:,n" . expand('<sfile>:p:h') . '/vim-config/vimfiles/tmpfiles/viminfo'
 
     " Always save .swp files on vimfiles swp folder
-    execute 'set directory^=' . expand('<sfile>:p:h') . '/vimfiles/tmpfiles//'
+    execute 'set directory^=' . expand('<sfile>:p:h') . '/vim-config/vimfiles/tmpfiles//'
 
     " Autoread a file when it's changed outside vim.
     set autoread
 
     " Save views on tmpfiles directory.
     if has('mksession')
-        execute 'set viewdir=' . expand('<sfile>:p:h') . '/vimfiles/tmpfiles/views'
+        execute 'set viewdir=' . expand('<sfile>:p:h') . '/vim-config/vimfiles/tmpfiles/views'
         set viewoptions=folds,options,curdir
     endif
 
@@ -350,7 +355,7 @@ let mapleader=" "
     augroup END
 
     " Actual coloscheme define.
-    colorscheme base16-onedark
+    colorscheme gruvbox
 
 " ============================================== }}}
 
@@ -395,14 +400,14 @@ let mapleader=" "
     " NerdTREE
     packadd! vim-nerdtree
     let NERDTreeHijackNetrw=1
-    let NERDTreeBookmarksFile=expand('<sfile>:p:h') . "/vimfiles/tmpfiles/.NERDTreeBookmarks"
+    let NERDTreeBookmarksFile=expand('<sfile>:p:h') . "/vim-config/vimfiles/tmpfiles/.NERDTreeBookmarks"
     let NERDTreeDirArrowExpandable="+"
     let NERDTreeDirArrowCollapsible="-"
 
     " Vimwiki
     packadd! vim-wiki
-    let g:vimwiki_list = [{'path': expand('<sfile>:p:h') . '/vimfiles/vimwiki/folder1/',
-                \ 'path_html': expand('<sfile>:p:h') . '/vimfiles/vimwiki/folder1/html/',
+    let g:vimwiki_list = [{'path': expand('<sfile>:p:h') . '/vim-config/vimfiles/vimwiki/folder1/',
+                \ 'path_html': expand('<sfile>:p:h') . '/vim-config/vimfiles/vimwiki/folder1/html/',
                 \ 'auto_export': 1}]
     let g:vimwiki_listsyms=' .oOx'
 

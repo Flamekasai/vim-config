@@ -1,3 +1,4 @@
+# Basic pluggins saved on bundle/opt
 git clone https://github.com/tpope/vim-commentary.git pack/bundle/opt/vim-commentary
 git clone https://github.com/tpope/vim-fugitive.git pack/bundle/opt/vim-fugitive
 git clone https://github.com/tpope/vim-repeat.git pack/bundle/opt/vim-repeat
@@ -8,6 +9,7 @@ git clone https://github.com/ctrlpvim/ctrlp.vim.git pack/bundle/opt/vim-ctrlp
 git clone https://github.com/mattn/emmet-vim.git pack/bundle/opt/vim-emmet
 git clone https://github.com/preservim/nerdtree.git pack/bundle/opt/vim-nerdtree
 git clone https://github.com/vimwiki/vimwiki.git pack/bundle/opt/vim-wiki
-
-# Not sure about this ones.
 git clone https://github.com/sheerun/vim-polyglot.git pack/bundle/opt/vim-polyglot
+
+# Colors saved on colors/start
+git clone https://github.com/morhetz/gruvbox.git pack/colors/start/gruvbox
