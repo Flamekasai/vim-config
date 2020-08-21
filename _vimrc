@@ -367,6 +367,7 @@ let mapleader=" "
     packadd! vim-repeat
     packadd! vim-surround
     packadd! vim-unimpaired
+    packadd! vim-dispatch
 
     packadd! vim-tabular
     packadd! vim-polyglot
