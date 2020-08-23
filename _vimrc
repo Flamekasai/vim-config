@@ -297,6 +297,7 @@ let mapleader=" "
     execute "set viminfo=\'100,<50,s10,h,rA:,rB:,n" . expand('<sfile>:p:h') . '/vim-config/vimfiles/tmpfiles/viminfo'
 
     " Always save .swp files on vimfiles swp folder
+    set noswapfile
     execute 'set directory^=' . expand('<sfile>:p:h') . '/vim-config/vimfiles/tmpfiles//'
 
     " Autoread a file when it's changed outside vim.
