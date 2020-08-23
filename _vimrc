@@ -13,20 +13,7 @@ language messages en_US.utf8
 
 " === Plugins ================================== {{{
 
-    " Activating desired plugins.
-    " packadd! vim-commentary
-    " packadd! vim-fugitive
-    " packadd! vim-repeat
-    " packadd! vim-surround
-    " packadd! vim-unimpaired
-    " packadd! vim-dispatch
-    " packadd! vim-tabular
-    " packadd! vim-polyglot
-    " packadd! vim-ctrlp
-    " packadd! vim-emmet
-    " packadd! vim-nerdtree
-    " packadd! vim-wiki
-
+    set noshellslash
     call plug#begin("~/vim-config/vimfiles/plugged")
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
@@ -35,25 +22,35 @@ language messages en_US.utf8
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-dispatch'
 
-    Plug 'godlygeek/tabular'
-    Plug 'kien/ctrlp.vim'
-    Plug 'mattn/emmet-vim'
     Plug 'preservim/nerdtree'
-    Plug 'vimwiki/vimwiki'
     Plug 'sheerun/vim-polyglot'
+
+    " Plug 'kien/ctrlp.vim'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+
+    Plug 'godlygeek/tabular'
+    Plug 'mattn/emmet-vim'
+    Plug 'vimwiki/vimwiki'
 
     Plug 'gruvbox-community/gruvbox'
     Plug 'chriskempson/base16-vim'
     Plug 'flazz/vim-colorschemes'
     Plug 'colepeters/spacemacs-theme.vim'
     call plug#end()
+    set shellslash
 
     " CtrlP
-    let g:ctrlp_map=''
-    nnoremap <silent> <C-P>p :CtrlP<CR>
-    nnoremap <silent> <C-P>b :CtrlPBuffer<CR>
-    nnoremap <silent> <C-P>m :CtrlPMRUFiles<CR>
-    nnoremap <silent> <C-P>c :CtrlPCurWD<CR>
+    " let g:ctrlp_map=''
+    " nnoremap <silent> <C-P>p :CtrlP<CR>
+    " nnoremap <silent> <C-P>b :CtrlPBuffer<CR>
+    " nnoremap <silent> <C-P>m :CtrlPMRUFiles<CR>
+    " nnoremap <silent> <C-P>c :CtrlPCurWD<CR>
+
+    " FZF
+    nnoremap <C-p> :GitFiles<CR>
+    let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+    let $FZF_DEFAULT_OPTS='--reverse'
 
     " Emmet
     let g:user_emmet_install_global = 0
@@ -82,8 +79,6 @@ language messages en_US.utf8
                 \ 'path_html': expand('<sfile>:p:h') . '/vim-config/vimfiles/vimwiki/folder1/html/',
                 \ 'auto_export': 1}]
     let g:vimwiki_listsyms=' .oOx'
-
-    set shellslash
 
     " ========================================== }}}
 
@@ -241,7 +236,7 @@ let mapleader=" "
     set omnifunc=syntaxcomplete#Complete
 
     " Make completion files use linux bars.
-    " activated after plug.vim has done it's work set shellslash
+    set shellslash
 
     " Remove octal interpretation
     set nrformats-=octal
@@ -392,8 +387,11 @@ let mapleader=" "
 
     " === Leader key mappings ================================== {{{
 
-        " Change buffer easily
-        nnoremap <silent> <leader>b :CtrlPBuffer<CR>
+        " FZF mapings
+        nnoremap <Leader>pf :Files<CR>
+        nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
+        nnoremap <Leader>ps :Rg<SPACE>
+        nnoremap <silent> <leader>e :e $HOME/_vimrc<CR>
         nnoremap <silent> <leader>gs :G<CR>
 
         " Save easy with leader + s
