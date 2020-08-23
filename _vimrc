@@ -47,10 +47,13 @@ language messages en_US.utf8
     " nnoremap <silent> <C-P>m :CtrlPMRUFiles<CR>
     " nnoremap <silent> <C-P>c :CtrlPCurWD<CR>
 
-    " FZF
+    " FZF and rg
     nnoremap <C-p> :GitFiles<CR>
     let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
     let $FZF_DEFAULT_OPTS='--reverse'
+    if executable('rg')
+        let g:rg_derive_root='true'
+    endif
 
     " Emmet
     let g:user_emmet_install_global = 0
@@ -388,9 +391,8 @@ let mapleader=" "
     " === Leader key mappings ================================== {{{
 
         " FZF mapings
-        nnoremap <Leader>pf :Files<CR>
-        nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
-        nnoremap <Leader>ps :Rg<SPACE>
+        nnoremap <leader>pf :Files<CR>
+        nnoremap <leader>pb :Buffers<CR>
         nnoremap <silent> <leader>e :e $HOME/_vimrc<CR>
         nnoremap <silent> <leader>gs :G<CR>
 
