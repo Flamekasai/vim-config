@@ -11,6 +11,82 @@ let &packpath=&runtimepath
 " Set only the messages in english
 language messages en_US.utf8
 
+" === Plugins ================================== {{{
+
+    " Activating desired plugins.
+    " packadd! vim-commentary
+    " packadd! vim-fugitive
+    " packadd! vim-repeat
+    " packadd! vim-surround
+    " packadd! vim-unimpaired
+    " packadd! vim-dispatch
+    " packadd! vim-tabular
+    " packadd! vim-polyglot
+    " packadd! vim-ctrlp
+    " packadd! vim-emmet
+    " packadd! vim-nerdtree
+    " packadd! vim-wiki
+
+    call plug#begin("~/vim-config/vimfiles/plugged")
+    Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-unimpaired'
+    Plug 'tpope/vim-dispatch'
+
+    Plug 'godlygeek/tabular'
+    Plug 'kien/ctrlp.vim'
+    Plug 'mattn/emmet-vim'
+    Plug 'preservim/nerdtree'
+    Plug 'vimwiki/vimwiki'
+    Plug 'sheerun/vim-polyglot'
+
+    Plug 'gruvbox-community/gruvbox'
+    Plug 'chriskempson/base16-vim'
+    Plug 'flazz/vim-colorschemes'
+    Plug 'colepeters/spacemacs-theme.vim'
+    call plug#end()
+
+    " CtrlP
+    let g:ctrlp_map=''
+    nnoremap <silent> <C-P>p :CtrlP<CR>
+    nnoremap <silent> <C-P>b :CtrlPBuffer<CR>
+    nnoremap <silent> <C-P>m :CtrlPMRUFiles<CR>
+    nnoremap <silent> <C-P>c :CtrlPCurWD<CR>
+
+    " Emmet
+    let g:user_emmet_install_global = 0
+    augroup EmmetConfig
+        autocmd! EmmetConfig
+        autocmd FileType html,css,xml EmmetInstall
+        autocmd FileType html,css,xml imap <Tab> <plug>(emmet-expand-abbr)
+    augroup END
+    let g:user_emmet_leader_key='<C-l>'
+
+    " Netrw
+    let g:netrw_altv=1 " Always open vertical split on right.
+    let g:netrw_banner=0 " Hide netrw banner.
+    let g:netrw_liststyle=0 " List style for directories. ( see :help g:netrw_liststyle )
+    let g:netrw_use_errorwindow=0 " Errors shown in cmdline with echo -> 0 or on a new window -> 1
+    let g:netrw_browse_split=0 " Open files in the previous window.
+
+    " NerdTREE
+    let NERDTreeHijackNetrw=0
+    let NERDTreeBookmarksFile=expand('<sfile>:p:h') . "/vim-config/vimfiles/tmpfiles/.NERDTreeBookmarks"
+    let NERDTreeDirArrowExpandable="+"
+    let NERDTreeDirArrowCollapsible="-"
+
+    " Vimwiki
+    let g:vimwiki_list = [{'path': expand('<sfile>:p:h') . '/vim-config/vimfiles/vimwiki/folder1/',
+                \ 'path_html': expand('<sfile>:p:h') . '/vim-config/vimfiles/vimwiki/folder1/html/',
+                \ 'auto_export': 1}]
+    let g:vimwiki_listsyms=' .oOx'
+
+    set shellslash
+
+    " ========================================== }}}
+
 " Set leader key for custom commands on <Space>
 let mapleader=" "
 
@@ -165,7 +241,7 @@ let mapleader=" "
     set omnifunc=syntaxcomplete#Complete
 
     " Make completion files use linux bars.
-    set shellslash
+    " activated after plug.vim has done it's work set shellslash
 
     " Remove octal interpretation
     set nrformats-=octal
@@ -317,6 +393,7 @@ let mapleader=" "
 
         " Change buffer easily
         nnoremap <silent> <leader>b :CtrlPBuffer<CR>
+        nnoremap <silent> <leader>gs :G<CR>
 
         " Save easy with leader + s
         nnoremap <leader>s :w<CR>
@@ -359,57 +436,4 @@ let mapleader=" "
 
 " ============================================== }}}
 
-" === Plugins ================================== {{{
-
-    " Activating desired plugins.
-    packadd! vim-commentary
-    packadd! vim-fugitive
-    packadd! vim-repeat
-    packadd! vim-surround
-    packadd! vim-unimpaired
-    packadd! vim-dispatch
-    packadd! vim-tabular
-    packadd! vim-polyglot
-    packadd! vim-ctrlp
-    packadd! vim-emmet
-    packadd! vim-nerdtree
-    packadd! vim-wiki
-
-    " CtrlP
-    let g:ctrlp_map=''
-    nnoremap <silent> <C-P>p :CtrlP<CR>
-    nnoremap <silent> <C-P>b :CtrlPBuffer<CR>
-    nnoremap <silent> <C-P>m :CtrlPMRUFiles<CR>
-    nnoremap <silent> <C-P>c :CtrlPCurWD<CR>
-
-    " Emmet
-    let g:user_emmet_install_global = 0
-    augroup EmmetConfig
-        autocmd! EmmetConfig
-        autocmd FileType html,css,xml EmmetInstall
-        autocmd FileType html,css,xml imap <Tab> <plug>(emmet-expand-abbr)
-    augroup END
-    let g:user_emmet_leader_key='<C-l>'
-
-    " Netrw
-    let g:netrw_altv=1 " Always open vertical split on right.
-    let g:netrw_banner=0 " Hide netrw banner.
-    let g:netrw_liststyle=0 " List style for directories. ( see :help g:netrw_liststyle )
-    let g:netrw_use_errorwindow=0 " Errors shown in cmdline with echo -> 0 or on a new window -> 1
-    let g:netrw_browse_split=0 " Open files in the previous window.
-
-    " NerdTREE
-    let NERDTreeHijackNetrw=0
-    let NERDTreeBookmarksFile=expand('<sfile>:p:h') . "/vim-config/vimfiles/tmpfiles/.NERDTreeBookmarks"
-    let NERDTreeDirArrowExpandable="+"
-    let NERDTreeDirArrowCollapsible="-"
-
-    " Vimwiki
-    let g:vimwiki_list = [{'path': expand('<sfile>:p:h') . '/vim-config/vimfiles/vimwiki/folder1/',
-                \ 'path_html': expand('<sfile>:p:h') . '/vim-config/vimfiles/vimwiki/folder1/html/',
-                \ 'auto_export': 1}]
-    let g:vimwiki_listsyms=' .oOx'
-
-    " ========================================== }}}
-
-    " vim:set ft=vim et sw=4 foldmethod=marker nowrap fo=cql:
+" vim:set ft=vim et sw=4 foldmethod=marker nowrap fo=cql:
