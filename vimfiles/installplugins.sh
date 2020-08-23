@@ -14,4 +14,7 @@ git clone https://github.com/vimwiki/vimwiki.git pack/bundle/opt/vim-wiki
 git clone https://github.com/sheerun/vim-polyglot.git pack/bundle/opt/vim-polyglot
 
 # Colors saved on colors/start
-git clone https://github.com/morhetz/gruvbox.git pack/colors/start/gruvbox
+git clone https://github.com/gruvbox-community/gruvbox.git pack/colors/start/gruvbox
+git clone https://github.com/chriskempson/base16-vim.git pack/colors/start/base16
+git clone https://github.com/flazz/vim-colorschemes.git pack/colors/start/flazzCollection
+git clone https://github.com/colepeters/spacemacs-theme.vim.git pack/colors/start/spacemacs

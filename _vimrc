@@ -4,8 +4,8 @@ if &compatible
 endif
 
 " Set folders to use vim-config folder ( git )
-set runtimepath^=$VIM/vim-config/vimfiles
-set runtimepath+=$VIM/vim-config/vimfiles/after
+set runtimepath^=$HOME/vim-config/vimfiles
+set runtimepath+=$HOME/vim-config/vimfiles/after
 let &packpath=&runtimepath
 
 " Set only the messages in english
@@ -368,12 +368,14 @@ let mapleader=" "
     packadd! vim-surround
     packadd! vim-unimpaired
     packadd! vim-dispatch
-
     packadd! vim-tabular
     packadd! vim-polyglot
+    packadd! vim-ctrlp
+    packadd! vim-emmet
+    packadd! vim-nerdtree
+    packadd! vim-wiki
 
     " CtrlP
-    packadd! vim-ctrlp
     let g:ctrlp_map=''
     nnoremap <silent> <C-P>p :CtrlP<CR>
     nnoremap <silent> <C-P>b :CtrlPBuffer<CR>
@@ -381,12 +383,10 @@ let mapleader=" "
     nnoremap <silent> <C-P>c :CtrlPCurWD<CR>
 
     " Emmet
-    packadd! vim-emmet
     let g:user_emmet_install_global = 0
     augroup EmmetConfig
         autocmd! EmmetConfig
         autocmd FileType html,css,xml EmmetInstall
-        " Move mapping to an ftplugin
         autocmd FileType html,css,xml imap <Tab> <plug>(emmet-expand-abbr)
     augroup END
     let g:user_emmet_leader_key='<C-l>'
@@ -399,14 +399,12 @@ let mapleader=" "
     let g:netrw_browse_split=0 " Open files in the previous window.
 
     " NerdTREE
-    packadd! vim-nerdtree
-    let NERDTreeHijackNetrw=1
+    let NERDTreeHijackNetrw=0
     let NERDTreeBookmarksFile=expand('<sfile>:p:h') . "/vim-config/vimfiles/tmpfiles/.NERDTreeBookmarks"
     let NERDTreeDirArrowExpandable="+"
     let NERDTreeDirArrowCollapsible="-"
 
     " Vimwiki
-    packadd! vim-wiki
     let g:vimwiki_list = [{'path': expand('<sfile>:p:h') . '/vim-config/vimfiles/vimwiki/folder1/',
                 \ 'path_html': expand('<sfile>:p:h') . '/vim-config/vimfiles/vimwiki/folder1/html/',
                 \ 'auto_export': 1}]
