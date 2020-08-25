@@ -1,4 +1,4 @@
-function utils#StripTrailingWhitespace() abort 
+function utils#StripTrailingWhitespace() abort
   if !&binary && &filetype != 'diff'
     let s:oldSearchRegister=@/
     %s/\s\+$//ce
@@ -36,7 +36,7 @@ function utils#MyStatusLine()
     let s .= ' %f %q%w%h%r%m '
     let s .= '%='
     let s .= '%#StatusLineTerm# '
-    if !empty(FugitiveStatusline())
+    if exists('g:loaded_fugitive') && !empty(FugitiveStatusline())
         let s .= '%{fugitive#statusline()} '
     endif
     let s .= '%y %c:%l/%L (%p%%) '
