@@ -355,6 +355,10 @@ let mapleader=" "
     inoremap <C-U> <C-G>u<C-U>
     inoremap <C-W> <C-W>u<C-W>
 
+    " Use Ctrl-Backspace to delete a word like in other apps the ! is for the
+    " mapping to work both on intert and command mode
+    map! <C-BS> <C-W>
+
     " Use : without pressing shift and ; pressing shift
     nnoremap : ;
     nnoremap ; :
@@ -371,9 +375,6 @@ let mapleader=" "
     nnoremap <C-J> <C-W>j
     nnoremap <C-K> <C-W>k
     nnoremap <C-L> <C-W>l
-
-    nnoremap <C-W><S-B> :ls!<CR>
-    nnoremap <C-W><C-B> :bw!<CR>
 
     " CTRL-Space in insert mode to extend abbreviations
     inoremap <C-Space> <C-]>
@@ -393,11 +394,15 @@ let mapleader=" "
         " FZF mapings
         nnoremap <leader>pf :Files<CR>
         nnoremap <leader>pb :Buffers<CR>
-        nnoremap <silent> <leader>e :e $HOME/_vimrc<CR>
+        nnoremap <silent> <leader>e :e $HOME/vim-config/_vimrc<CR>
         nnoremap <silent> <leader>gs :G<CR>
 
         " Save easy with leader + s
         nnoremap <leader>s :w<CR>
+
+        " Easy list of buffers and buffer deletion
+        nnoremap <leader>bl :ls!<CR>
+        nnoremap <leader>bw :bw!<CR>
 
     " ====================================================== }}}
 
