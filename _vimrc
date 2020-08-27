@@ -49,7 +49,8 @@ language messages en_US.utf8
 
     " FZF and rg
     nnoremap <C-p> :GitFiles<CR>
-    let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+    " Doesn't work on windows very well
+    " let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
     let $FZF_DEFAULT_OPTS='--reverse'
     if executable('rg')
         let g:rg_derive_root='true'
