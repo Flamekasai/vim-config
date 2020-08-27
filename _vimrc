@@ -355,8 +355,11 @@ let mapleader=" "
     inoremap <C-U> <C-G>u<C-U>
     inoremap <C-W> <C-W>u<C-W>
 
+    " CTRL-Space in insert mode to extend abbreviations
+    inoremap <C-Space> <C-]>
+
     " Use Ctrl-Backspace to delete a word like in other apps the ! is for the
-    " mapping to work both on intert and command mode
+    " mapping to work both on insert and command mode
     map! <C-BS> <C-W>
 
     " Use : without pressing shift and ; pressing shift
@@ -367,6 +370,10 @@ let mapleader=" "
     " Substitute last search pattern easily
     nnoremap <S-S> :%s//
 
+    " Use + and _ to paste easy from clipboard
+    nnoremap + "+p
+    nnoremap _ "+P
+
     " Make Y act as D and C and all the capitals
     nnoremap <S-Y> y$
 
@@ -376,14 +383,14 @@ let mapleader=" "
     nnoremap <C-K> <C-W>k
     nnoremap <C-L> <C-W>l
 
-    " CTRL-Space in insert mode to extend abbreviations
-    inoremap <C-Space> <C-]>
-
     " CTRL-Z to NERDTreeToggle
     nnoremap <C-Z> :NERDTreeToggle<CR>
 
     " Make * search for selection in visual mode
     xnoremap * y/\<<C-R>0\><CR>
+
+    " Make + copy selected things to the clipboard
+    xnoremap + "+y
 
     " Swap : and ; in visual mode too
     xnoremap : ;
@@ -392,8 +399,8 @@ let mapleader=" "
     " === Leader key mappings ================================== {{{
 
         " FZF mapings
-        nnoremap <leader>pf :Files<CR>
-        nnoremap <leader>pb :Buffers<CR>
+        nnoremap <leader>ff :Files<CR>
+        nnoremap <leader>fb :Buffers<CR>
         nnoremap <silent> <leader>e :e $HOME/vim-config/_vimrc<CR>
         nnoremap <silent> <leader>gs :G<CR>
 
