@@ -52,6 +52,7 @@ language messages en_US.utf8
     " Doesn't work on windows very well
     " let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
     let $FZF_DEFAULT_OPTS='--reverse'
+    let g:fzf_preview_window=''
     if executable('rg')
         let g:rg_derive_root='true'
     endif
@@ -61,7 +62,7 @@ language messages en_US.utf8
     augroup EmmetConfig
         autocmd! EmmetConfig
         autocmd FileType html,css,xml EmmetInstall
-        autocmd FileType html,css,xml imap <Tab> <plug>(emmet-expand-abbr)
+        autocmd FileType html,css,xml imap <C-]> <plug>(emmet-expand-abbr)
     augroup END
     let g:user_emmet_leader_key='<C-l>'
 
@@ -384,9 +385,6 @@ let mapleader=" "
     nnoremap <C-K> <C-W>k
     nnoremap <C-L> <C-W>l
 
-    " CTRL-Z to NERDTreeToggle
-    nnoremap <C-Z> :NERDTreeToggle<CR>
-
     " Make * search for selection in visual mode
     xnoremap * y/\<<C-R>0\><CR>
 
@@ -399,7 +397,9 @@ let mapleader=" "
 
     " === Leader key mappings ================================== {{{
 
-        " FZF mapings
+        " File navigation mapings
+        nnoremap <leader>fl :NERDTreeToggle<CR>
+        nnoremap <leader>ft :NERDTree<space>
         nnoremap <leader>ff :Files<CR>
         nnoremap <leader>fb :Buffers<CR>
         nnoremap <silent> <leader>e :e $HOME/vim-config/_vimrc<CR>
