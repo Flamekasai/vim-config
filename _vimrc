@@ -64,7 +64,7 @@ language messages en_US.utf8
         autocmd FileType html,css,xml EmmetInstall
         autocmd FileType html,css,xml imap <C-]> <plug>(emmet-expand-abbr)
     augroup END
-    let g:user_emmet_leader_key='<C-l>'
+    let g:user_emmet_leader_key='<C-E>'
 
     " Netrw
     let g:netrw_altv=1 " Always open vertical split on right.
