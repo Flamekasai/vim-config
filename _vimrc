@@ -42,7 +42,7 @@ language messages en_US.utf8
     set shellslash
 
     " Coc
-    let g:coc_config_home = expand('<sfile>:p:h') . '/vim-config/vimfiles'
+    let g:coc_config_home = substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles'
 
     " FZF and rg
     nnoremap <C-p> :GitFiles<CR>
@@ -72,15 +72,15 @@ language messages en_US.utf8
 
     " NerdTREE
     let NERDTreeHijackNetrw=0
-    let NERDTreeBookmarksFile=expand('<sfile>:p:h') . "/vim-config/vimfiles/tmpfiles/.NERDTreeBookmarks"
+    let NERDTreeBookmarksFile=substitute(expand('$HOME'), '\', '/', 'g') . "/vim-config/vimfiles/tmpfiles/.NERDTreeBookmarks"
     let NERDTreeDirArrowExpandable="+"
     let NERDTreeDirArrowCollapsible="-"
 
     " Vimwiki
     " Disable mappings with g:vimwiki_key_mappings g:vimwiki_key_mappings
     let g:vimwiki_key_mappings= {'global': 0} " Disable global mappings for vimwiki, use Ex-Commands
-    let g:vimwiki_list = [{'path': expand('<sfile>:p:h') . '/vim-config/vimfiles/vimwiki/folder1/',
-                \ 'path_html': expand('<sfile>:p:h') . '/vim-config/vimfiles/vimwiki/folder1/html/',
+    let g:vimwiki_list = [{'path': substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/vimwiki/folder1/',
+                \ 'path_html': substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/vimwiki/folder1/html/',
                 \ 'syntax': 'markdown', 'ext': '.md',
                 \ 'auto_export': 0}]
     let g:vimwiki_listsyms=' .oOx'
@@ -294,18 +294,18 @@ let mapleader=" "
 " === Reading and writing files ================================== {{{
 
     " Vim info file. for Reference -> 'viminfo'
-    execute "set viminfo=\'100,<50,s10,h,rA:,rB:,n" . expand('<sfile>:p:h') . '/vim-config/vimfiles/tmpfiles/viminfo'
+    execute "set viminfo=\'100,<50,s10,h,rA:,rB:,n" . substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/tmpfiles/viminfo'
 
     " Always save .swp files on vimfiles swp folder
     set noswapfile
-    execute 'set directory^=' . expand('<sfile>:p:h') . '/vim-config/vimfiles/tmpfiles//'
+    execute 'set directory^=' . substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/tmpfiles//'
 
     " Autoread a file when it's changed outside vim.
     set autoread
 
     " Save views on tmpfiles directory.
     if has('mksession')
-        execute 'set viewdir=' . expand('<sfile>:p:h') . '/vim-config/vimfiles/tmpfiles/views'
+        execute 'set viewdir=' . substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/tmpfiles/views'
         set viewoptions=folds,options,curdir
     endif
 
