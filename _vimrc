@@ -22,10 +22,11 @@ language messages en_US.utf8
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-dispatch'
 
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
     Plug 'preservim/nerdtree'
     Plug 'sheerun/vim-polyglot'
 
-    " Plug 'kien/ctrlp.vim'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
 
@@ -40,12 +41,8 @@ language messages en_US.utf8
     call plug#end()
     set shellslash
 
-    " CtrlP
-    " let g:ctrlp_map=''
-    " nnoremap <silent> <C-P>p :CtrlP<CR>
-    " nnoremap <silent> <C-P>b :CtrlPBuffer<CR>
-    " nnoremap <silent> <C-P>m :CtrlPMRUFiles<CR>
-    " nnoremap <silent> <C-P>c :CtrlPCurWD<CR>
+    " Coc
+    let g:coc_config_home = expand('<sfile>:p:h') . '/vim-config/vimfiles'
 
     " FZF and rg
     nnoremap <C-p> :GitFiles<CR>
@@ -80,9 +77,12 @@ language messages en_US.utf8
     let NERDTreeDirArrowCollapsible="-"
 
     " Vimwiki
+    " Disable mappings with g:vimwiki_key_mappings g:vimwiki_key_mappings
+    let g:vimwiki_key_mappings= {'global': 0} " Disable global mappings for vimwiki, use Ex-Commands
     let g:vimwiki_list = [{'path': expand('<sfile>:p:h') . '/vim-config/vimfiles/vimwiki/folder1/',
                 \ 'path_html': expand('<sfile>:p:h') . '/vim-config/vimfiles/vimwiki/folder1/html/',
-                \ 'auto_export': 1}]
+                \ 'syntax': 'markdown', 'ext': '.md',
+                \ 'auto_export': 0}]
     let g:vimwiki_listsyms=' .oOx'
 
     " ========================================== }}}
