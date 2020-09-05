@@ -294,7 +294,11 @@ let mapleader=" "
 " === Reading and writing files ================================== {{{
 
     " Vim info file. for Reference -> 'viminfo'
-    execute "set viminfo=\'100,<50,s10,h,rA:,rB:,n" . substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/tmpfiles/viminfo'
+    if has('nvim')
+        execute "set viminfo=\'100,<50,s10,h,rA:,rB:,n" . substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/tmpfiles/viminfoNvim'
+    else
+        execute "set viminfo=\'100,<50,s10,h,rA:,rB:,n" . substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/tmpfiles/viminfo'
+    endif
 
     " Always save .swp files on vimfiles swp folder
     set noswapfile
