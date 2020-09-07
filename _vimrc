@@ -45,9 +45,7 @@ language messages en_US.utf8
     let g:coc_config_home = substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles'
 
     " FZF and rg
-    nnoremap <C-p> :GitFiles<CR>
-    " Doesn't work on windows very well
-    " let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+    " Doesn't work on windows very well: let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
     let $FZF_DEFAULT_OPTS='--reverse'
     let g:fzf_preview_window=''
     if executable('rg')
@@ -357,20 +355,14 @@ let mapleader=" "
 
 " === Mappings ================================== {{{
 
-    " Make undo point before deleting wole edit or word
-    inoremap <C-U> <C-G>u<C-U>
-    inoremap <C-W> <C-W>u<C-W>
-
-    " CTRL-Space in insert mode to extend abbreviations
-    inoremap <C-Space> <C-]>
-
-    " Use Ctrl-Backspace to delete a word like in other apps the ! is for the
-    " mapping to work both on insert and command mode
+    " Use Ctrl-Backspace to delete a word like in other apps
+    " The ! is for the mapping to work both on insert and command mode
     map! <C-BS> <C-W>
 
     " Use : without pressing shift and ; pressing shift
-    nnoremap : ;
-    nnoremap ; :
+    " This mapping works on Normal, Visual, Select and Operator-pending
+    noremap : ;
+    noremap ; :
     nnoremap q; q:
 
     " Substitute last search pattern easily
@@ -383,21 +375,29 @@ let mapleader=" "
     " Make Y act as D and C and all the capitals
     nnoremap <S-Y> y$
 
+    " Use Ctrl-P to open file search
+    nnoremap <C-P> :Files<CR>
+
     " Remap CTRL-HJKL to move between windows.
     nnoremap <C-H> <C-W>h
     nnoremap <C-J> <C-W>j
     nnoremap <C-K> <C-W>k
     nnoremap <C-L> <C-W>l
 
+    " Make undo point before deleting wole edit or word
+    inoremap <C-U> <C-G>u<C-U>
+    inoremap <C-W> <C-W>u<C-W>
+
+    " CTRL-Space in insert mode to extend abbreviations
+    inoremap <C-Space> <C-]>
+
     " Make * search for selection in visual mode
     xnoremap * y/\<<C-R>0\><CR>
 
+    " Make _ paste from clipboard substituting the selection
     " Make + copy selected things to the clipboard
+    xnoremap _ "+p
     xnoremap + "+y
-
-    " Swap : and ; in visual mode too
-    xnoremap : ;
-    xnoremap ; :
 
     " === Leader key mappings ================================== {{{
 
@@ -406,6 +406,7 @@ let mapleader=" "
         nnoremap <leader>ft :NERDTree<space>
         nnoremap <leader>ff :Files<CR>
         nnoremap <leader>fb :Buffers<CR>
+        nnoremap <leader>fg :GitFiles<CR>
         nnoremap <silent> <leader>e :e $HOME/vim-config/_vimrc<CR>
         nnoremap <silent> <leader>gs :G<CR>
 

@@ -1,0 +1,2 @@
+vunmap <buffer> +
+nunmap <buffer> +

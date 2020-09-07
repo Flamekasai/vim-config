@@ -1,4 +1,4 @@
-function utils#StripTrailingWhitespace() abort
+function! utils#StripTrailingWhitespace() abort
   if !&binary && &filetype != 'diff'
     let s:oldSearchRegister=@/
     %s/\s\+$//ce
@@ -7,7 +7,7 @@ function utils#StripTrailingWhitespace() abort
   endif
 endfunction
 
-function utils#MyTabLine()
+function! utils#MyTabLine() abort
     let s = ''
     for i in range(tabpagenr('$'))
         let s .= '%#TabLineFill# '
@@ -31,7 +31,7 @@ function utils#MyTabLine()
     return s
 endfunction
 
-function utils#MyStatusLine()
+function! utils#MyStatusLine() abort
     let s = ''
     let s .= ' %f %q%w%h%r%m '
     let s .= '%='
