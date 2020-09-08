@@ -42,7 +42,8 @@ language messages en_US.utf8
     set shellslash
 
     " Coc
-    let g:coc_config_home = substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles'
+    let g:coc_config_home = substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/coc'
+    let g:coc_data_home = substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/coc'
 
     " FZF and rg
     " Doesn't work on windows very well: let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
@@ -409,6 +410,7 @@ let mapleader=" "
         nnoremap <leader>fg :GitFiles<CR>
         nnoremap <silent> <leader>e :e $HOME/vim-config/_vimrc<CR>
         nnoremap <silent> <leader>gs :G<CR>
+        nnoremap <silent> <leader>ww :VimwikiIndex<CR>
 
         " Save easy with leader + s
         nnoremap <leader>s :w<CR>
