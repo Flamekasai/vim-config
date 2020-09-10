@@ -222,6 +222,10 @@ let mapleader=" "
         set belloff=all
     endif
 
+    " Always show signcolumn
+    " This is to avoid appearing / disappearing
+    set signcolumn=yes
+
 " ======================================================== }}}
 
 " === Editing text and completion ================================== {{{
@@ -279,7 +283,7 @@ let mapleader=" "
     " Interesting options: foldmethod, foldopen, and foldclose
 
     " Set fold marks to be on line number space.
-    set foldcolumn=2
+    set foldcolumn=0 " No fold column.
 
 " ============================================== }}}
 
