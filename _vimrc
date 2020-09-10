@@ -358,7 +358,11 @@ let mapleader=" "
 
     " Use Ctrl-Backspace to delete a word like in other apps
     " The ! is for the mapping to work both on insert and command mode
-    map! <C-BS> <C-W>
+    if has('nvim')
+        map! <C-H> <C-W>
+    else
+        map! <C-BS> <C-W>
+    endif
 
     " Use : without pressing shift and ; pressing shift
     " This mapping works on Normal, Visual, Select and Operator-pending
