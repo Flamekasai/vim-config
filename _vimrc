@@ -413,15 +413,19 @@ let mapleader=" "
         nnoremap <leader>fb :Buffers<CR>
         nnoremap <leader>fg :GitFiles<CR>
         nnoremap <silent> <leader>e :e $HOME/vim-config/_vimrc<CR>
+        " FuGITive mappings
         nnoremap <silent> <leader>gs :G<CR>
-        nnoremap <silent> <leader>ww :VimwikiIndex<CR>
 
         " Save easy with leader + s
         nnoremap <leader>s :w<CR>
 
-        " Easy list of buffers and buffer deletion
+        " Buffer manipulation mappings
         nnoremap <leader>bl :ls!<CR>
         nnoremap <leader>bw :bw!<CR>
+
+        nnoremap <silent> <leader>ww :VimwikiIndex<CR>
+        nnoremap <silent> <leader>gh :CocList diagnostics<CR>
+        nnoremap <silent> <leader>gH :CocList commands<CR>
 
     " ====================================================== }}}
 
