@@ -36,8 +36,6 @@ language messages en_US.utf8
 
     Plug 'gruvbox-community/gruvbox'
     Plug 'chriskempson/base16-vim'
-    Plug 'flazz/vim-colorschemes'
-    Plug 'colepeters/spacemacs-theme.vim'
     call plug#end()
     set shellslash
 
@@ -80,6 +78,10 @@ language messages en_US.utf8
     let g:vimwiki_key_mappings= {'global': 0} " Disable global mappings for vimwiki, use Ex-Commands
     let g:vimwiki_list = [{'path': substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/vimwiki/folder1/',
                 \ 'path_html': substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/vimwiki/folder1/html/',
+                \ 'syntax': 'markdown', 'ext': '.md',
+                \ 'auto_export': 0},
+                \ {'path': substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/vimwiki/college/',
+                \ 'path_html': substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/vimwiki/college/html/',
                 \ 'syntax': 'markdown', 'ext': '.md',
                 \ 'auto_export': 0}]
     let g:vimwiki_listsyms=' .oOx'
@@ -341,6 +343,9 @@ let mapleader=" "
 
     " Setting the font.
     set guifont=Consolas:h14:cANSI:qDRAFT
+
+    " Allow use of touchscreen.
+    set mouse=a
 
 " ========================================== }}}
 
