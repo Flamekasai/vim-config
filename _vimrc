@@ -8,9 +8,6 @@ set runtimepath^=$HOME/vim-config/vimfiles
 set runtimepath+=$HOME/vim-config/vimfiles/after
 let &packpath=&runtimepath
 
-" Set only the messages in english
-language messages en_US.utf8
-
 " === Plugins ================================== {{{
 
     set noshellslash
@@ -56,7 +53,7 @@ language messages en_US.utf8
     augroup EmmetConfig
         autocmd! EmmetConfig
         autocmd FileType html,css,xml EmmetInstall
-        autocmd FileType html,css,xml imap <C-]> <plug>(emmet-expand-abbr)
+        autocmd FileType html,css,xml imap ,e <plug>(emmet-expand-abbr)
     augroup END
     let g:user_emmet_leader_key='<C-E>'
 
@@ -421,7 +418,7 @@ let mapleader=" "
         nnoremap <leader>ff :Files<CR>
         nnoremap <leader>fb :Buffers<CR>
         nnoremap <leader>fg :GitFiles<CR>
-        nnoremap <silent> <leader>e :e $HOME/vim-config/_vimrc<CR>
+        nnoremap <silent> <leader>fi :e $HOME/vim-config/_vimrc<CR>
         " FuGITive mappings
         nnoremap <silent> <leader>gs :G<CR>
 
