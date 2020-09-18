@@ -41,8 +41,9 @@ let &packpath=&runtimepath
     let g:coc_data_home = substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/coc'
 
     " FZF and rg
-    " Doesn't work on windows very well: let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+    " Default layout changed to window.
     let $FZF_DEFAULT_OPTS='--reverse'
+    let g:fzf_layout = { 'down': '40%' }
     let g:fzf_preview_window=''
     if executable('rg')
         let g:rg_derive_root='true'
@@ -404,6 +405,9 @@ let mapleader=" "
 
     " Make * search for selection in visual mode
     xnoremap * y/\<<C-R>0\><CR>
+    xnoremap g* y/<C-R>0<CR>
+    xnoremap # y?\<<C-R>0\><CR>
+    xnoremap g# y?<C-R>0<CR>
 
     " Make _ paste from clipboard substituting the selection
     " Make + copy selected things to the clipboard
