@@ -54,7 +54,6 @@ let &packpath=&runtimepath
     augroup EmmetConfig
         autocmd! EmmetConfig
         autocmd FileType html,css,xml EmmetInstall
-        autocmd FileType html,css,xml imap ,e <plug>(emmet-expand-abbr)
     augroup END
     let g:user_emmet_leader_key='<C-E>'
 
@@ -281,6 +280,8 @@ let mapleader=" "
 " === Folding ================================== {{{
 
     " Interesting options: foldmethod, foldopen, and foldclose
+    set foldmethod=syntax
+    set foldlevelstart=99
 
     " Set fold marks to be on line number space.
     set foldcolumn=0 " No fold column.
@@ -433,9 +434,15 @@ let mapleader=" "
         nnoremap <leader>bl :ls!<CR>
         nnoremap <leader>bw :bw!<CR>
 
-        nnoremap <silent> <leader>ww :VimwikiIndex<CR>
-        nnoremap <silent> <leader>gh :CocList diagnostics<CR>
+        " COC
+        nmap <silent> <leader>gd <Plug>(coc-definition)
+        nmap <silent> <leader>gr <Plug>(coc-references)
+        nnoremap <silent> <leader>gD :CocList diagnostics<CR>
+        nnoremap <silent> <leader>gh :call CocActionAsync("doHover")<CR>
         nnoremap <silent> <leader>gH :CocList commands<CR>
+
+        " Vimwiki
+        nnoremap <silent> <leader>ww :VimwikiIndex<CR>
 
     " ====================================================== }}}
 
