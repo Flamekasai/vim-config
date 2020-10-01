@@ -364,6 +364,8 @@ let mapleader=" "
 
 " === Mappings ================================== {{{
 
+    " For specific filetype mappings check the after/ftplugin folder on vim-config/vimfiles
+
     " Use Ctrl-Backspace to delete a word like in other apps
     " The ! is for the mapping to work both on insert and command mode
     if has('nvim')
