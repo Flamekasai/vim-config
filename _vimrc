@@ -8,6 +8,11 @@ set runtimepath^=$HOME/vim-config/vimfiles
 set runtimepath+=$HOME/vim-config/vimfiles/after
 let &packpath=&runtimepath
 
+augroup CustomFT
+    au!
+    autocmd BufNewFile,BufRead *.pl set ft=prolog
+augroup END
+
 " === Plugins ================================== {{{
 
     set noshellslash
@@ -412,10 +417,10 @@ let mapleader=" "
     xnoremap # y?\<<C-R>0\><CR>
     xnoremap g# y?<C-R>0<CR>
 
-    " Make _ paste from clipboard substituting the selection
-    " Make + copy selected things to the clipboard
-    xnoremap _ "+p
-    xnoremap + "+y
+    " Make + paste from clipboard substituting the selection
+    " Make _ copy selected things to the clipboard
+    xnoremap + "+p
+    xnoremap _ "+y
 
     " === Leader key mappings ================================== {{{
 
@@ -435,6 +440,7 @@ let mapleader=" "
         " Buffer manipulation mappings
         nnoremap <leader>bl :ls!<CR>
         nnoremap <leader>bw :bw!<CR>
+        nnoremap <leader>bW :%bw!<CR>
 
         " COC
         nmap <silent> <leader>gd <Plug>(coc-definition)
@@ -473,11 +479,11 @@ let mapleader=" "
     set background=dark
 
     " Change search highlight
-    augroup ChangeHighlights
-        autocmd! ChangeHighlights
+    " augroup ChangeHighlights
+    "     autocmd! ChangeHighlights
 
-        autocmd ColorScheme * highlight clear Search | highlight Search term=underline cterm=underline ctermfg=14 gui=underline guifg=#bf5656
-    augroup END
+    "     autocmd ColorScheme * highlight clear Search | highlight Search term=underline cterm=underline ctermfg=14 gui=underline guifg=#bf5656
+    " augroup END
 
     " Actual coloscheme define.
     colorscheme gruvbox
