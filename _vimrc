@@ -44,6 +44,8 @@ augroup END
     " Coc
     let g:coc_config_home = substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/coc'
     let g:coc_data_home = substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/coc'
+    let g:coc_snippet_next ="<C-L>"
+    let g:coc_snippet_prev ="<C-H>"
 
     " FZF and rg
     " Default layout changed to window.
@@ -63,6 +65,8 @@ augroup END
     let g:user_emmet_leader_key='<C-E>'
 
     " Netrw
+    let g:loaded_netrw = 1
+    let g:loaded_netrwPlugin = 1
     let g:netrw_altv=1 " Always open vertical split on right.
     let g:netrw_banner=0 " Hide netrw banner.
     let g:netrw_liststyle=0 " List style for directories. ( see :help g:netrw_liststyle )
@@ -70,7 +74,7 @@ augroup END
     let g:netrw_browse_split=0 " Open files in the previous window.
 
     " NerdTREE
-    let NERDTreeHijackNetrw=0
+    let NERDTreeHijackNetrw=1
     let NERDTreeBookmarksFile=substitute(expand('$HOME'), '\', '/', 'g') . "/vim-config/vimfiles/tmpfiles/.NERDTreeBookmarks"
     let NERDTreeDirArrowExpandable="+"
     let NERDTreeDirArrowCollapsible="-"
@@ -336,7 +340,7 @@ let mapleader=" "
     set wildmenu
 
     " Options for complete menu on command line.
-    set wildmode=longest,full
+    set wildmode=full
 
 " =========================================================== }}}
 
@@ -371,22 +375,14 @@ let mapleader=" "
 
     " For specific filetype mappings check the after/ftplugin folder on vim-config/vimfiles
 
-    " Use Ctrl-Backspace to delete a word like in other apps
-    " The ! is for the mapping to work both on insert and command mode
-    if has('nvim')
-        map! <C-H> <C-W>
-    else
-        map! <C-BS> <C-W>
-    endif
+    " Easy escape
+    map! <C-H> <ESC>
 
     " Use : without pressing shift and ; pressing shift
     " This mapping works on Normal, Visual, Select and Operator-pending
     noremap : ;
     noremap ; :
     nnoremap q; q:
-
-    " Substitute last search pattern easily
-    nnoremap <S-S> :%s//
 
     " Use + and _ to paste easy from clipboard
     nnoremap + "+p
@@ -411,6 +407,11 @@ let mapleader=" "
     " CTRL-Space in insert mode to extend abbreviations
     inoremap <C-Space> <C-]>
 
+    " Completion mappings
+    inoremap <expr> <C-J> pumvisible() ? '<C-N>' : '<C-J>'
+    inoremap <expr> <C-K> pumvisible() ? '<C-P>' : '<C-K>'
+    inoremap <expr> <C-L> pumvisible() ? '<C-Y>' : coc#refresh()
+
     " Make * search for selection in visual mode
     xnoremap * y/\<<C-R>0\><CR>
     xnoremap g* y/<C-R>0<CR>
@@ -426,7 +427,7 @@ let mapleader=" "
 
         " File navigation mapings
         nnoremap <leader>fl :NERDTreeToggle<CR>
-        nnoremap <leader>ft :NERDTree<space>
+        nnoremap <leader>ft :NERDTreeToggle<space>
         nnoremap <leader>ff :Files<CR>
         nnoremap <leader>fb :Buffers<CR>
         nnoremap <leader>fg :GitFiles<CR>
@@ -445,6 +446,7 @@ let mapleader=" "
         " COC
         nmap <silent> <leader>gd <Plug>(coc-definition)
         nmap <silent> <leader>gr <Plug>(coc-references)
+        nnoremap <silent> <leader>go :CocList outline<CR>
         nnoremap <silent> <leader>gD :CocList diagnostics<CR>
         nnoremap <silent> <leader>gh :call CocActionAsync("doHover")<CR>
         nnoremap <silent> <leader>gH :CocList commands<CR>
