@@ -445,7 +445,8 @@ let mapleader=" "
 
         " COC
         nmap <silent> <leader>gd <Plug>(coc-definition)
-        nmap <silent> <leader>gr <Plug>(coc-references)
+        nmap <silent> <leader>gR <Plug>(coc-references)
+        nnoremap <silent> <leader>gr :call CocActionAsync("rename")<CR>
         nnoremap <silent> <leader>go :CocList outline<CR>
         nnoremap <silent> <leader>gD :CocList diagnostics<CR>
         nnoremap <silent> <leader>gh :call CocActionAsync("doHover")<CR>
