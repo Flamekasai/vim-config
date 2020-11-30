@@ -491,9 +491,14 @@ let mapleader=" "
     " Actual coloscheme define.
     " colorscheme gruvbox
 
+    let disable_random_colors = 0
     augroup RandomColorscheme
         au!
-        au VimEnter * :call utils#GetRandomColorscheme()
+        if (disable_random_colors == 0)
+            au VimEnter * :call utils#GetRandomColorscheme()
+        else
+            colorscheme gruvbox
+        endif
     augroup END
 
 " ============================================== }}}
