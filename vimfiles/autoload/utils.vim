@@ -42,3 +42,19 @@ function! utils#MyStatusLine() abort
     let s .= '%y %c:%l/%L (%p%%) '
     return s
 endfunction
+
+function! utils#GetRandomColorscheme()
+  let randomOffset = 0
+  let favouriteColors = []
+  if has('win32')
+    let favouriteColors = readfile('C:\\Users\\flame\\vim-config\\vimfiles\\favouriteColors.txt')
+    let randomOffset = system('echo %random%')
+  elseif has('unix')
+    let favouriteColors = readfile('/home/arg190/vim-config/vimfiles/favouriteColors.txt')
+    let randomOffset = system('echo $RANDOM')
+  endif
+  let limit = len(favouriteColors)
+  let randomOffset = randomOffset % limit
+  execute 'colorscheme ' . favouriteColors[randomOffset]
+  echo g:colors_name
+endfunction

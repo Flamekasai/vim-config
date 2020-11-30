@@ -489,7 +489,12 @@ let mapleader=" "
     " augroup END
 
     " Actual coloscheme define.
-    colorscheme gruvbox
+    " colorscheme gruvbox
+
+    augroup RandomColorscheme
+        au!
+        au VimEnter * :call utils#GetRandomColorscheme()
+    augroup END
 
 " ============================================== }}}
 
