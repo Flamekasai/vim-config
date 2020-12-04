@@ -44,8 +44,8 @@ augroup END
     " Coc
     let g:coc_config_home = substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/coc'
     let g:coc_data_home = substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/coc'
-    let g:coc_snippet_next ="<C-L>"
-    let g:coc_snippet_prev ="<C-H>"
+    let g:coc_snippet_prev ="<C-[>"
+    let g:coc_snippet_next ="<C-]>"
 
     " FZF and rg
     " Default layout changed to window.
@@ -376,7 +376,9 @@ let mapleader=" "
     " For specific filetype mappings check the after/ftplugin folder on vim-config/vimfiles
 
     " Easy escape
-    map! <C-H> <ESC>
+    imap <C-H> <ESC>
+    xmap <C-H> <ESC>
+    cmap <C-H> <C-C>
 
     " Use : without pressing shift and ; pressing shift
     " This mapping works on Normal, Visual, Select and Operator-pending

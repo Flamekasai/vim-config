@@ -44,17 +44,30 @@ function! utils#MyStatusLine() abort
 endfunction
 
 function! utils#GetRandomColorscheme()
-  let randomOffset = 0
-  let favouriteColors = []
-  if has('win32')
-    let favouriteColors = readfile(expand('$HOME') . '/vim-config/vimfiles/favouriteColors.txt')
-    let randomOffset = system('echo %random%')
-  elseif has('unix')
-    let favouriteColors = readfile(expand('~') . '/vim-config/vimfiles/favouriteColors.txt')
-    let randomOffset = system('echo $RANDOM')
-  endif
-  let limit = len(favouriteColors)
-  let randomOffset = randomOffset % limit
-  execute 'colorscheme ' . favouriteColors[randomOffset]
-  echo g:colors_name
+    let randomOffset = 0
+    let favouriteColors = []
+
+    if has('win32')
+        let favouriteColors = readfile(expand('$HOME') . '/vim-config/vimfiles/favouriteColors.txt')
+        let randomOffset = system('echo %random%')
+    elseif has('unix')
+        let favouriteColors = readfile(expand('~') . '/vim-config/vimfiles/favouriteColors.txt')
+        let randomOffset = system('echo $RANDOM')
+    endif
+
+    let limit = len(favouriteColors)
+    let randomOffset = randomOffset % limit
+    execute 'colorscheme ' . favouriteColors[randomOffset]
+
+    if (g:colors_name == 'base16-papercolor-dark')
+        hi! link LineNr WarningMsg
+        hi! link CursorLineNr SpecialKey
+        hi! link StatusLine TermCursor
+        hi! link StatusLineNC TermCursorNC
+        hi! link SignColumn LineNr
+        hi! link VertSplit Normal
+        syn sync fromstart
+    endif
+
+    echo g:colors_name
 endfunction
