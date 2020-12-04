@@ -8,7 +8,6 @@ base16-material-palenight
 base16-materia
 base16-mocha
 base16-woodland
-base16-papercolor-dark
 base16-paraiso
 base16-rebecca
 base16-solarflare
