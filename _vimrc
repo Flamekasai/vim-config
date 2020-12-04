@@ -10,7 +10,7 @@ let &packpath=&runtimepath
 
 augroup CustomFT
     au!
-    autocmd BufNewFile,BufRead *.pl set ft=prolog
+    autocmd BufEnter *.pl set ft=prolog
 augroup END
 
 " === Plugins ================================== {{{
