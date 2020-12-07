@@ -376,9 +376,10 @@ let mapleader=" "
     " For specific filetype mappings check the after/ftplugin folder on vim-config/vimfiles
 
     " Easy escape
-    imap <C-H> <ESC>
-    xmap <C-H> <ESC>
-    cmap <C-H> <C-C>
+    inoremap <C-H> <ESC>
+    xnoremap <C-H> <ESC>
+    cnoremap <C-H> <C-C>
+    tnoremap <C-H> <C-\><C-N>
 
     " Use : without pressing shift and ; pressing shift
     " This mapping works on Normal, Visual, Select and Operator-pending
