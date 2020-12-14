@@ -2,8 +2,10 @@ if !exists('b:undo_ftplugin')
     let b:undo_ftplugin = ''
 endif
 
-vunmap <buffer> +
-nunmap <buffer> +
+if hasmapto('+', 'n') && hasmapto('+', 'v')
+    vunmap <buffer> +
+    nunmap <buffer> +
+endif
 
 nmap <silent><buffer> ,s <Plug>VimwikiToggleListItem
 nmap <silent><buffer> ,d <Plug>VimwikiDecrementListItem

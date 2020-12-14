@@ -44,7 +44,6 @@ augroup END
     " Coc
     let g:coc_config_home = substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/coc'
     let g:coc_data_home = substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/coc'
-    let g:coc_snippet_prev ="<C-[>"
     let g:coc_snippet_next ="<C-]>"
 
     " FZF and rg
@@ -376,8 +375,8 @@ let mapleader=" "
     " For specific filetype mappings check the after/ftplugin folder on vim-config/vimfiles
 
     " Easy escape
-    inoremap <C-H> <ESC>
     xnoremap <C-H> <ESC>
+    inoremap <C-H> <ESC>
     cnoremap <C-H> <C-C>
     tnoremap <C-H> <C-\><C-N>
 
@@ -403,6 +402,17 @@ let mapleader=" "
     nnoremap <C-K> <C-W>k
     nnoremap <C-L> <C-W>l
 
+    " Make * search for selection in visual mode
+    xnoremap * y/\<<C-R>0\><CR>
+    xnoremap g* y/<C-R>0<CR>
+    xnoremap # y?\<<C-R>0\><CR>
+    xnoremap g# y?<C-R>0<CR>
+
+    " Make + paste from clipboard substituting the selection
+    " Make _ copy selected things to the clipboard
+    xnoremap + "+p
+    xnoremap _ "+y
+
     " Make undo point before deleting wole edit or word
     inoremap <C-U> <C-G>u<C-U>
     inoremap <C-W> <C-W>u<C-W>
@@ -415,16 +425,9 @@ let mapleader=" "
     inoremap <expr> <C-K> pumvisible() ? '<C-P>' : '<C-K>'
     inoremap <expr> <C-L> pumvisible() ? '<C-Y>' : coc#refresh()
 
-    " Make * search for selection in visual mode
-    xnoremap * y/\<<C-R>0\><CR>
-    xnoremap g* y/<C-R>0<CR>
-    xnoremap # y?\<<C-R>0\><CR>
-    xnoremap g# y?<C-R>0<CR>
-
-    " Make + paste from clipboard substituting the selection
-    " Make _ copy selected things to the clipboard
-    xnoremap + "+p
-    xnoremap _ "+y
+    " Command line completion mappings
+    cnoremap <C-K> <C-P>
+    cnoremap <C-J> <C-N>
 
     " === Leader key mappings ================================== {{{
 
@@ -448,8 +451,8 @@ let mapleader=" "
 
         " COC
         nmap <silent> <leader>gd <Plug>(coc-definition)
+        nmap <silent> <leader>gr <Plug>(coc-rename)
         nmap <silent> <leader>gR <Plug>(coc-references)
-        nnoremap <silent> <leader>gr :call CocActionAsync("rename")<CR>
         nnoremap <silent> <leader>go :CocList outline<CR>
         nnoremap <silent> <leader>gD :CocList diagnostics<CR>
         nnoremap <silent> <leader>gh :call CocActionAsync("doHover")<CR>
