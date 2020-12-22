@@ -209,6 +209,9 @@ let mapleader=" "
     " Show partial comands while typing them.
     set showcmd
 
+    " Don't show mode is already in statusline
+    set noshowmode
+
     " Defines how some messages are displayed.
     set shortmess=f
     set shortmess+=m

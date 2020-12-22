@@ -31,15 +31,48 @@ function! utils#MyTabLine() abort
     return s
 endfunction
 
+let g:mode_names = {
+            \ 'n'      : 'normal',
+            \ 'no'     : 'normal',
+            \ 'nov'    : 'normal',
+            \ 'noV'    : 'normal',
+            \ 'no'   : 'normal',
+            \ 'niI'    : 'normal',
+            \ 'niR'    : 'normal',
+            \ 'niV'    : 'normal',
+            \ 'v'      : 'visual',
+            \ 'V'      : 'v-line',
+            \ ''     : 'v-block',
+            \ 's'      : 'select',
+            \ 'S'      : 's-line',
+            \ ''     : 's-block',
+            \ 'i'      : 'insert',
+            \ 'ic'     : 'insert',
+            \ 'ix'     : 'insert',
+            \ 'R'      : 'replace',
+            \ 'Rc'     : 'replace',
+            \ 'Rv'     : 'v-replace',
+            \ 'Rx'     : 'replace',
+            \ 'c'      : 'command',
+            \ 'cv'     : 'ex-mode',
+            \ 'ce'     : 'ex-mode',
+            \ 'r'      : 'hit-enter',
+            \ 'rm'     : 'more',
+            \ 'r?'     : 'confirm',
+            \ '!'      : 'shell',
+            \ 't'      : 'terminal'
+            \ }
 function! utils#MyStatusLine() abort
-    let s = ''
-    let s .= ' %f %q%w%h%r%m '
+    let s = ' '
+    let s .= '[%{toupper(g:mode_names[mode("fullnames")])}]'
     let s .= '%='
-    let s .= '%#StatusLineTerm# '
-    if exists('g:loaded_fugitive') && !empty(FugitiveStatusline())
-        let s .= '%{fugitive#statusline()} '
+    let s .= '%f %(%q%w%h%r%m%)'
+    let s .= '%='
+    if exists('g:loaded_fugitive') && !empty(FugitiveHead())
+        let s .= '[%{fugitive#head()}] '
     endif
-    let s .= '%y %c:%l/%L (%p%%) '
+    let s .= '%y '
+    let s .= '%l:%L '
     return s
 endfunction
 
