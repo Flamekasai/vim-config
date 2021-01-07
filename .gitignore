@@ -1,11 +1,5 @@
-.portableVimrc
-.termVimrc
-old.vimrc
-vim.zip
-vim82/
 vimfiles/pack/
 vimfiles/tmpfiles/
 vimfiles/.netrwhist
 vimfiles/plugged/
 vimfiles/coc/
-vimfiles/vimwiki/college/
