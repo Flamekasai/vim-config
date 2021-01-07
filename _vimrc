@@ -243,6 +243,9 @@ let mapleader=" "
     " What can backspace delete.
     set backspace=indent,eol,start
 
+    " Set max width of lines
+    set textwidth=65
+
     " Formating ( Change as needed ) options for info :help fo-table
     set formatoptions-=o
     set formatoptions+=j
@@ -420,9 +423,6 @@ let mapleader=" "
     inoremap <C-U> <C-G>u<C-U>
     inoremap <C-W> <C-W>u<C-W>
 
-    " CTRL-Space in insert mode to extend abbreviations
-    inoremap <C-Space> <C-]>
-
     " Completion mappings
     inoremap <expr> <C-J> pumvisible() ? '<C-N>' : '<C-J>'
     inoremap <expr> <C-K> pumvisible() ? '<C-P>' : '<C-K>'
@@ -511,5 +511,8 @@ let mapleader=" "
     augroup END
 
 " ============================================== }}}
+
+" Source project custom settings.
+silent! so .vim/.exrc
 
 " vim:set ft=vim et sw=4 foldmethod=marker nowrap fo=cql:
