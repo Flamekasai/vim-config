@@ -41,57 +41,7 @@ augroup END
     call plug#end()
     set shellslash
 
-    " Coc
-    let g:coc_config_home = substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/coc'
-    let g:coc_data_home = substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/coc'
-    let g:coc_snippet_next ="<C-]>"
-
-    " FZF and rg
-    " Default layout changed to window.
-    let $FZF_DEFAULT_OPTS='--reverse'
-    let g:fzf_layout = { 'down': '40%' }
-    let g:fzf_preview_window=''
-    if executable('rg')
-        let g:rg_derive_root='true'
-    endif
-
-    " Emmet
-    let g:user_emmet_install_global = 0
-    augroup EmmetConfig
-        autocmd! EmmetConfig
-        autocmd FileType html,css,xml EmmetInstall
-    augroup END
-    let g:user_emmet_leader_key='<C-E>'
-
-    " Netrw
-    let g:loaded_netrw = 1
-    let g:loaded_netrwPlugin = 1
-    let g:netrw_altv=1 " Always open vertical split on right.
-    let g:netrw_banner=0 " Hide netrw banner.
-    let g:netrw_liststyle=0 " List style for directories. ( see :help g:netrw_liststyle )
-    let g:netrw_use_errorwindow=0 " Errors shown in cmdline with echo -> 0 or on a new window -> 1
-    let g:netrw_browse_split=0 " Open files in the previous window.
-
-    " NerdTREE
-    let NERDTreeHijackNetrw=1
-    let NERDTreeBookmarksFile=substitute(expand('$HOME'), '\', '/', 'g') . "/vim-config/vimfiles/tmpfiles/.NERDTreeBookmarks"
-    let NERDTreeDirArrowExpandable="+"
-    let NERDTreeDirArrowCollapsible="-"
-
-    " Vimwiki
-    " Disable mappings with g:vimwiki_key_mappings g:vimwiki_key_mappings
-    let g:vimwiki_key_mappings= {'global': 0} " Disable global mappings for vimwiki, use Ex-Commands
-    let g:vimwiki_list = [{'path': substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/vimwiki/folder1/',
-                \ 'path_html': substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/vimwiki/folder1/html/',
-                \ 'syntax': 'markdown', 'ext': '.md',
-                \ 'auto_export': 0},
-                \ {'path': substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/vimwiki/college/',
-                \ 'path_html': substitute(expand('$HOME'), '\', '/', 'g') . '/vim-config/vimfiles/vimwiki/college/html/',
-                \ 'syntax': 'markdown', 'ext': '.md',
-                \ 'auto_export': 0}]
-    let g:vimwiki_listsyms=' .oOx'
-
-    " ========================================== }}}
+" ========================================== }}}
 
 " Set leader key for custom commands on <Space>
 let mapleader=" "
