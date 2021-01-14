@@ -379,8 +379,9 @@ let mapleader=" "
     inoremap <expr> <C-L> pumvisible() ? '<C-Y>' : coc#refresh()
 
     " Command line completion mappings
-    cnoremap <C-K> <C-P>
-    cnoremap <C-J> <C-N>
+    cnoremap <C-J> <Down>
+    cnoremap <C-K> <Up>
+    cnoremap <C-L> <Tab>
 
     " === Leader key mappings ================================== {{{
 
