@@ -11,6 +11,7 @@ let &packpath=&runtimepath
 augroup CustomFT
     au!
     autocmd BufEnter *.pl set ft=prolog
+    autocmd BufNewFile,BufRead *.colors set ft=colors
 augroup END
 
 " === Plugins ================================== {{{

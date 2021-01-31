@@ -81,10 +81,10 @@ function! utils#GetRandomColorscheme()
     let favouriteColors = []
 
     if has('win32')
-        let favouriteColors = readfile(expand('$HOME') . '/vim-config/vimfiles/favouriteColors.txt')
+        let favouriteColors = readfile(expand('$HOME') . '/vim-config/vimfiles/favouriteColors.colors')
         let randomOffset = system('echo %random%')
     elseif has('unix')
-        let favouriteColors = readfile(expand('~') . '/vim-config/vimfiles/favouriteColors.txt')
+        let favouriteColors = readfile(expand('~') . '/vim-config/vimfiles/favouriteColors.colors')
         let randomOffset = system('echo $RANDOM')
     endif
 
