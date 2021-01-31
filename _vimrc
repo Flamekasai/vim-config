@@ -388,7 +388,7 @@ let mapleader=" "
 
         " File navigation mapings
         nnoremap <leader>fl :NERDTreeToggle<CR>
-        nnoremap <leader>ft :NERDTreeToggle<space>
+        nnoremap <leader>ft :NERDTree<space>
         nnoremap <leader>ff :Files<CR>
         nnoremap <leader>fb :Buffers<CR>
         nnoremap <leader>fg :GitFiles<CR>
