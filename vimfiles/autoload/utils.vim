@@ -76,7 +76,7 @@ function! utils#MyStatusLine() abort
     return s
 endfunction
 
-function! utils#GetRandomColorscheme()
+function! utils#GetRandomColorscheme() abort
     let randomOffset = 0
     let favouriteColors = []
 
@@ -103,4 +103,11 @@ function! utils#GetRandomColorscheme()
     endif
 
     echo g:colors_name
+endfunction
+
+function! utils#ChangeHighlights() abort
+    if (g:enable_transparent_bg == 1)
+        highlight Normal ctermbg=NONE guibg=NONE
+    endif
+    " highlight clear Search | highlight Search term=underline cterm=underline ctermfg=14 gui=underline guifg=#bf5656
 endfunction

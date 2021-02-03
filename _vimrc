@@ -39,6 +39,7 @@ augroup END
 
     Plug 'gruvbox-community/gruvbox'
     Plug 'chriskempson/base16-vim'
+    Plug 'flazz/vim-colorschemes'
     call plug#end()
     set shellslash
 
@@ -442,19 +443,16 @@ let mapleader=" "
     " For dark terminal windows and hybrid colorschemes dark.
     set background=dark
 
-    " Change search highlight
-    " augroup ChangeHighlights
-    "     autocmd! ChangeHighlights
-
-    "     autocmd ColorScheme * highlight clear Search | highlight Search term=underline cterm=underline ctermfg=14 gui=underline guifg=#bf5656
-    " augroup END
-
-    " Actual coloscheme define.
-    " colorscheme gruvbox
+    " Change certain highlight to all colorschemes
+    let g:enable_transparent_bg = 0
+    augroup ChangeHighlights
+        autocmd! ChangeHighlights
+        autocmd Colorscheme * call utils#ChangeHighlights()
+    augroup END
 
     let disable_random_colors = 0
     augroup RandomColorscheme
-        au!
+        autocmd! RandomColorscheme
         if (disable_random_colors == 0)
             au VimEnter * :call utils#GetRandomColorscheme()
         else
