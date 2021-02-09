@@ -10,7 +10,8 @@ let &packpath=&runtimepath
 
 augroup CustomFT
     au!
-    autocmd BufEnter *.pl set ft=prolog
+    autocmd BufNewFile,BufRead *.pl set ft=prolog
+    autocmd BufNewFile,BufRead *.asm set ft=asm
     autocmd BufNewFile,BufRead *.colors set ft=colors
 augroup END
 
@@ -444,16 +445,16 @@ let mapleader=" "
     set background=dark
 
     " Change certain highlight to all colorschemes
-    let g:enable_transparent_bg = 0
+    let g:enable_transparent_bg = 1
     augroup ChangeHighlights
         autocmd! ChangeHighlights
         autocmd Colorscheme * call utils#ChangeHighlights()
     augroup END
 
-    let disable_random_colors = 0
+    let enable_random_colors = 1
     augroup RandomColorscheme
         autocmd! RandomColorscheme
-        if (disable_random_colors == 0)
+        if (enable_random_colors == 1)
             au VimEnter * :call utils#GetRandomColorscheme()
         else
             colorscheme gruvbox

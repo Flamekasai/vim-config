@@ -102,6 +102,8 @@ function! utils#GetRandomColorscheme() abort
         syn sync fromstart
     endif
 
+    call utils#ChangeHighlights()
+
     echo g:colors_name
 endfunction
 
