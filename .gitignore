@@ -1,0 +1,5 @@
+vimfiles/pack/
+vimfiles/tmpfiles/
+vimfiles/.netrwhist
+vimfiles/plugged/
+vimfiles/coc/
