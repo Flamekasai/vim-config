@@ -406,6 +406,7 @@ let mapleader=" "
         nnoremap <silent><expr> <leader>co HasActiveLSP() ? ':CocList outline<CR>' : '<leader>co'
         nnoremap <silent><expr> <leader>cd HasActiveLSP() ? ':CocList diagnostics<CR>' : '<leader>cd'
         nnoremap <silent><expr> <leader>cc HasActiveLSP() ? ':CocList commands<CR>' : '<leader>cc'
+        nnoremap <silent><expr> <leader>cf HasActiveLSP() ? ':CocFix<CR>' : '<leader>cf'
 
         nnoremap <silent><expr> K HasActiveLSP() ? ':call CocActionAsync("doHover")<CR>' :'K'
         nmap <silent><expr> <C-]> HasActiveLSP() ? '<Plug>(coc-definition)' : '<C-]>'

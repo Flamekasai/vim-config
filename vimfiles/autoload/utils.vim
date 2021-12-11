@@ -105,6 +105,8 @@ function! utils#ChangeHighlights() abort
         hi! link SignColumn LineNr
         hi! link VertSplit Normal
         syn sync fromstart
+    elseif (g:colors_name == 'gruvbox')
+        hi! Visual  gui=NONE guibg=#3c3836
     endif
     " highlight clear Search | highlight Search term=underline cterm=underline ctermfg=14 gui=underline guifg=#bf5656
 
