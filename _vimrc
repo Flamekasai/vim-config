@@ -262,7 +262,7 @@ let mapleader=" "
 " === Diff mode ================================== {{{
 
     " Added vertical to make diffs always open vertical.
-    set diffopt=internal,filler,closeoff,vertical
+    set diffopt=internal,filler,closeoff,vertical,algorithm:patience
 
 " ============================================== }}}
 
@@ -454,7 +454,8 @@ let mapleader=" "
         if (enable_random_colors == 1)
             au VimEnter * :call utils#GetRandomColorscheme()
         else
-            colorscheme solarized8_dark
+            let g:gruvbox_italic=1
+            colorscheme gruvbox
         endif
     augroup END
 
@@ -462,5 +463,9 @@ let mapleader=" "
 
 " Source project custom settings.
 silent! so .vim/.exrc
+
+" GUI options (neovide)
+set guioptions=Pe
+set guifont=Victor\ Mono:h18:cANSI:qDRAFT
 
 " vim:set ft=vim et sw=4 foldmethod=marker nowrap fo=cql:
