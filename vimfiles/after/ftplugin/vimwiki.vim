@@ -15,16 +15,18 @@ set spell spelllang=en,es
 
 nnoremap <buffer> <leader>z 1z=
 nnoremap <buffer> <leader>p :Dispatch! pandoc -o %:r.pdf %<CR>
-nnoremap <buffer> <leader>l :lv /^#/j % \| lw \| llast<CR><C-o>
+nnoremap <buffer> <leader>ll :lv /^#/j % \| lw \| llast<CR><C-o>
+nnoremap <buffer> <leader>la :lv /^#/j ## \| lw \| llast<CR><C-o>
 nnoremap <buffer> [ot :set formatoptions+=t<CR>
 nnoremap <buffer> ]ot :set formatoptions-=t<CR>
 
-inoremap <buffer> <C-k> <C-K>
+inoremap <buffer> <C-k> <C-k>
+nnoremap <buffer> <Tab> gn<C-g>
 inoreabbrev <buffer> overl \overline{}<left>
 inoreabbrev <buffer> inter \cap
 inoreabbrev <buffer> union \cup
-inoreabbrev <buffer> fr \frac{++}{++}<esc>/++<CR>gn<C-g>
-inoreabbrev <buffer> combi \left(\begin{matrix}++ \\++\end{matrix}\right)<esc>/++<CR>gn<C-g>
+inoreabbrev <buffer> fr \frac{++}{++} ++<esc>?++<CR>nngn<C-g>
+inoreabbrev <buffer> combi \left(\begin{matrix}++ \\++\end{matrix}\right)<esc>?++<CR>ngn<C-g>
 call CocActionAsync("deactivateExtension", "coc-tabnine")
 
 
