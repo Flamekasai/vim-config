@@ -2,8 +2,13 @@ if !exists('b:undo_ftplugin')
     let b:undo_ftplugin = ''
 endif
 
-silent! vunmap <buffer> +
-silent! nunmap <buffer> +
+if (!empty(mapcheck('+', 'v')))
+    silent! vunmap <buffer> +
+endif
+
+if (!empty(mapcheck('+', 'n')))
+    silent! nunmap <buffer> +
+endif
 
 nmap <silent><buffer> ,s <Plug>VimwikiToggleListItem
 nmap <silent><buffer> ,d <Plug>VimwikiDecrementListItem
@@ -37,10 +42,12 @@ let b:undo_ftplugin .= '|set spell<'
 let b:undo_ftplugin .= '|set spelllang<'
 let b:undo_ftplugin .= '|nunmap <buffer> <leader>z'
 let b:undo_ftplugin .= '|nunmap <buffer> <leader>p'
-let b:undo_ftplugin .= '|nunmap <buffer> <leader>l'
+let b:undo_ftplugin .= '|nunmap <buffer> <leader>ll'
+let b:undo_ftplugin .= '|nunmap <buffer> <leader>la'
 let b:undo_ftplugin .= '|nunmap <buffer> [ot'
 let b:undo_ftplugin .= '|nunmap <buffer> ]ot'
 let b:undo_ftplugin .= '|iunmap <buffer> <C-k>'
+let b:undo_ftplugin .= '|nunmap <buffer> <Tab>'
 let b:undo_ftplugin .= '|iunabbrev <buffer> overl'
 let b:undo_ftplugin .= '|iunabbrev <buffer> inter'
 let b:undo_ftplugin .= '|iunabbrev <buffer> union'
