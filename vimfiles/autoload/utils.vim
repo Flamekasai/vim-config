@@ -17,15 +17,18 @@ function! utils#MyTabLine() abort
             let s .= '%#TabLine# '
         endif
         let s .= i + 1
-        let buffersInTab = tabpagebuflist(i + 1)
-        let firstBufferInTab = bufname(buffersInTab[0])
-        let s .= (getbufvar(buffersInTab[tabpagewinnr(i + 1) - 1], "&mod")?' [+] ':' ')
-        if empty(firstBufferInTab)
-            let firstBufferInTab="[Sin Nombre]"
-        else
-            let firstBufferInTab = fnamemodify(firstBufferInTab, ':t')
-        endif
-        let s .= firstBufferInTab . ' '
+        " Comment This to only have numbers "
+        "==================================="
+        " let buffersInTab = tabpagebuflist(i + 1)
+        " let firstBufferInTab = bufname(buffersInTab[0])
+        " let s .= (getbufvar(buffersInTab[tabpagewinnr(i + 1) - 1], "&mod")?' [+] ':' ')
+        " if empty(firstBufferInTab)
+        "     let firstBufferInTab="[Sin Nombre]"
+        " else
+        "     let firstBufferInTab = fnamemodify(firstBufferInTab, ':t')
+        " endif
+        " let s .= firstBufferInTab . ' '
+        "==================================="
     endfor
     let s .= '%#TabLineFill#%T'
     return s

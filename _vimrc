@@ -405,6 +405,7 @@ let mapleader=" "
 
         " Buffer manipulation mappings
         nnoremap <leader>bl :ls!<CR>
+        nnoremap <leader>bt :tabs<CR>
         nnoremap <leader>bw :bw!<CR>
         nnoremap <leader>bW :%bw!<CR>
 
