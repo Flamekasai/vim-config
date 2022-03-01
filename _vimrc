@@ -131,6 +131,9 @@ let mapleader=" "
         set t_Co=256
     endif
 
+    " Set languages to use when spell is activated.
+    set spelllang=en,es
+
     " When add a word to either bad or good spelling adding a lowercaps word ads uppercaps too but adding uppercaps only adds upercaps.
     if has('syntax')
       set spellcapcheck=
@@ -151,6 +154,9 @@ let mapleader=" "
 
     " Custom status line
     set statusline=%!utils#MyStatusLine()
+
+    " Split more naturally (right or below
+    set splitright splitbelow
 
 " ======================================================= }}}
 
