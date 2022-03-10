@@ -34,8 +34,8 @@ augroup END
     Plug 'preservim/nerdtree'
     Plug 'sheerun/vim-polyglot'
 
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
 
     Plug 'godlygeek/tabular'
     Plug 'mattn/emmet-vim'
@@ -393,9 +393,9 @@ let mapleader=" "
         " File navigation mapings
         nnoremap <leader>fl :NERDTreeToggle<CR>
         nnoremap <leader>ft :NERDTree<space>
-        nnoremap <leader>ff :Files<CR>
-        nnoremap <leader>fb :Buffers<CR>
-        nnoremap <leader>fg :GitFiles<CR>
+        nnoremap <leader>ff :Telescope find_files<CR>
+        nnoremap <leader>fb :Telescope buffers<CR>
+        nnoremap <leader>fg :Telescope git_files<CR>
         nnoremap <silent> <leader>fi :e $HOME/vim-config/_vimrc<CR>
         " FuGITive mappings
         nnoremap <silent> <leader>gs :G<CR>
