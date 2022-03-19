@@ -10,6 +10,7 @@ let &packpath=&runtimepath
 
 augroup CustomFT
     au!
+    autocmd BufNewFile,BufRead *.aspx set ft=aspx
     autocmd BufNewFile,BufRead *.pl set ft=prolog
     autocmd BufNewFile,BufRead *.asm set ft=asm
     autocmd BufNewFile,BufRead *.colors set ft=colors
