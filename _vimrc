@@ -28,7 +28,7 @@ augroup END
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-dispatch'
 
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'neovim/nvim-lspconfig'
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -215,7 +215,7 @@ let mapleader=" "
     set formatoptions+=j
 
     " Options for complete menu on file.
-    set completeopt=menu,preview
+    set completeopt=menu,menuone,noselect
 
     " Set functions to omnicompletion.
     set omnifunc=syntaxcomplete#Complete
@@ -387,7 +387,6 @@ let mapleader=" "
     " Completion mappings
     inoremap <expr> <C-J> pumvisible() ? '<C-N>' : '<C-J>'
     inoremap <expr> <C-K> pumvisible() ? '<C-P>' : '<C-K>'
-    inoremap <expr> <C-L> pumvisible() ? '<C-Y>' : coc#refresh()
 
     " === Leader key mappings ================================== {{{
 
@@ -410,17 +409,16 @@ let mapleader=" "
         nnoremap <leader>bw :bw!<CR>
         nnoremap <leader>bW :%bw!<CR>
 
-        " COC
-        nnoremap <silent><expr> <leader>co HasActiveLSP() ? ':CocList outline<CR>' : '<leader>co'
-        nnoremap <silent><expr> <leader>cd HasActiveLSP() ? ':CocList diagnostics<CR>' : '<leader>cd'
-        nnoremap <silent><expr> <leader>cc HasActiveLSP() ? ':CocList commands<CR>' : '<leader>cc'
-        nnoremap <silent><expr> <leader>cf HasActiveLSP() ? ':CocFix<CR>' : '<leader>cf'
-        nnoremap <silent><expr> <leader>ca HasActiveLSP() ? ':CocAction<CR>' : '<leader>ca'
-
-        nnoremap <silent><expr> K HasActiveLSP() ? ':call CocActionAsync("doHover")<CR>' :'K'
-        nmap <silent><expr> <C-]> HasActiveLSP() ? '<Plug>(coc-definition)' : '<C-]>'
-        nmap <silent><expr> cv HasActiveLSP() ? '<Plug>(coc-rename)' : 'cv'
-        nmap <silent><expr> [I HasActiveLSP() ? '<Plug>(coc-references)' : '[I'
+        " LSP
+        augroup LSP
+            autocmd! LSP
+            autocmd Colorscheme base16-* hi! link LineNr Normal
+            autocmd Colorscheme * hi! link SignColumn LineNr | hi! clear FloatBorder | hi! link FloatBorder Pmenu
+            autocmd Colorscheme * hi! link DiagnosticSignError DiagnosticError
+            autocmd Colorscheme * hi! link DiagnosticSignWarn DiagnosticWarn
+            autocmd Colorscheme * hi! link DiagnosticSignHint DiagnosticHint
+            autocmd Colorscheme * hi! link DiagnosticSignInfo DiagnosticInfo
+        augroup END
 
         " Vimwiki
         nnoremap <silent> <leader>ww :VimwikiIndex<CR>
