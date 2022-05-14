@@ -16,7 +16,7 @@ nmap <silent><buffer> ,f <Plug>VimwikiIncrementListItem
 
 " Cosas de apuntes de clase
 
-set spell spelllang=en,es
+setlocal spell spelllang=en,es comments=s:>,m:>,e:> fo+=c nonu nornu fillchars=vert:¦,eob:\ ,fold:-
 
 nnoremap <buffer> <leader>z 1z=
 nnoremap <buffer> <leader>p :Dispatch! pandoc -o %:r.pdf %<CR>
@@ -32,7 +32,6 @@ inoreabbrev <buffer> inter \cap
 inoreabbrev <buffer> union \cup
 inoreabbrev <buffer> fr \frac{++}{++} ++<esc>?++<CR>nngn<C-g>
 inoreabbrev <buffer> combi \left(\begin{matrix}++ \\++\end{matrix}\right)<esc>?++<CR>ngn<C-g>
-call CocActionAsync("deactivateExtension", "coc-tabnine")
 
 
 let b:undo_ftplugin .= 'nunmap <silent><buffer> ,s'
@@ -53,4 +52,3 @@ let b:undo_ftplugin .= '|iunabbrev <buffer> inter'
 let b:undo_ftplugin .= '|iunabbrev <buffer> union'
 let b:undo_ftplugin .= '|iunabbrev <buffer> fr'
 let b:undo_ftplugin .= '|iunabbrev <buffer> combi'
-let b:undo_ftplugin .= '|call CocActionAsync("activeExtension", "coc-tabnine")'

@@ -30,6 +30,14 @@ augroup END
 
     Plug 'neovim/nvim-lspconfig'
 
+    Plug 'hrsh7th/nvim-cmp',     { 'branch': 'main' }
+    Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
+    Plug 'hrsh7th/cmp-buffer',   { 'branch': 'main' }
+    Plug 'hrsh7th/cmp-path',     { 'branch': 'main' }
+    "TODO Plug 'tzachar/cmp-tabnine',  { 'do': './install.sh' }
+
+    Plug 'L3MON4D3/LuaSnip'
+
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
     Plug 'preservim/nerdtree'
@@ -87,7 +95,7 @@ let mapleader=" "
     endif
 
     " Prefix for lines that broke with wrap to see that they are broken lines.
-    set showbreak=>>>
+    set showbreak=
 
     " Margin from border to cursor.
     set scrolloff=1
@@ -410,10 +418,12 @@ let mapleader=" "
         nnoremap <leader>bW :%bw!<CR>
 
         " LSP
-        augroup LSP
-            autocmd! LSP
+        augroup LSPCustomColors
+            autocmd! LSPCustomColors
             autocmd Colorscheme base16-* hi! link LineNr Normal
-            autocmd Colorscheme * hi! link SignColumn LineNr | hi! clear FloatBorder | hi! link FloatBorder Pmenu
+            autocmd Colorscheme * hi! link SignColumn LineNr
+            " Make floating and complete menus same color as background
+            autocmd Colorscheme * hi! clear FloatBorder | hi! link FloatBorder Normal | hi! link Pmenu Normal
             autocmd Colorscheme * hi! link DiagnosticSignError DiagnosticError
             autocmd Colorscheme * hi! link DiagnosticSignWarn DiagnosticWarn
             autocmd Colorscheme * hi! link DiagnosticSignHint DiagnosticHint

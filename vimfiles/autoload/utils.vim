@@ -63,7 +63,8 @@ let g:mode_names = {
             \ 'rm'     : 'more',
             \ 'r?'     : 'confirm',
             \ '!'      : 'shell',
-            \ 't'      : 'terminal'
+            \ 't'      : 'terminal',
+            \ 'nt'     : 'terminal'
             \ }
 function! utils#MyStatusLine() abort
     let s = ' '
@@ -72,7 +73,7 @@ function! utils#MyStatusLine() abort
     let s .= '%f %(%q%w%h%r%m%)'
     let s .= '%='
     if exists('g:loaded_fugitive') && !empty(FugitiveHead())
-        let s .= '[%{fugitive#head()}] '
+        let s .= '[%{FugitiveHead()}] '
     endif
     let s .= '%y '
     let s .= '%l:%L '
