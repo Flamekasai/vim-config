@@ -77,7 +77,7 @@ let mapleader=" "
     set smartcase
 
     " Highlight all search matches. ( default )
-    set nohlsearch
+    set hlsearch
 
 "  ============================================================================ }}}
 
@@ -110,10 +110,10 @@ let mapleader=" "
     set encoding=utf-8
 
     " Characters for custom hidden chars
-    set listchars=tab:>\ ,trail:·,extends:»,precedes:«,eol:$
+    set listchars=tab:>\ ,trail:·,eol:$
 
     " Characters for some decorations like vertical separator etc.
-    set fillchars=vert:\¦,fold:-
+    " set fillchars=vert:\¦,fold:-
 
     " Don't redraw screen inside macros.
     set lazyredraw
@@ -164,7 +164,7 @@ let mapleader=" "
     " Custom status line
     set statusline=%!utils#MyStatusLine()
 
-    " Split more naturally (right or below
+    " Split more naturally (right or below)
     set splitright splitbelow
 
 " ======================================================= }}}
@@ -200,9 +200,7 @@ let mapleader=" "
     set shortmess+=c
 
     " No beeps when you do something wrong.
-    if exists('&belloff')
-        set belloff=all
-    endif
+    set belloff=all
 
     " Always show signcolumn
     " This is to avoid appearing / disappearing
@@ -277,7 +275,7 @@ let mapleader=" "
 " === Diff mode ================================== {{{
 
     " Added vertical to make diffs always open vertical.
-    set diffopt=internal,filler,closeoff,vertical,algorithm:patience
+    set diffopt+=vertical,algorithm:patience
 
 " ============================================== }}}
 
@@ -324,10 +322,11 @@ let mapleader=" "
 " === GUI ================================== {{{
 
     " Set GUI Options.
-    set guioptions=gck
+    set guioptions=gckPe
 
     " Setting the font.
     set guifont=Consolas:h14:cANSI:qDRAFT
+    " set guifont=Victor\ Mono:h18:cANSI:qDRAFT
 
     " Allow use of touchscreen.
     set mouse=a
@@ -393,8 +392,10 @@ let mapleader=" "
     inoremap <C-W> <C-W>u<C-W>
 
     " Completion mappings
-    inoremap <expr> <C-J> pumvisible() ? '<C-N>' : '<C-J>'
-    inoremap <expr> <C-K> pumvisible() ? '<C-P>' : '<C-K>'
+    " inoremap <expr> <C-J> pumvisible() ? '<C-N>' : '<C-J>'
+    " inoremap <expr> <C-K> pumvisible() ? '<C-P>' : '<C-K>'
+
+    " Snippet mappings
 
     " === Leader key mappings ================================== {{{
 
@@ -480,10 +481,9 @@ let mapleader=" "
 " ============================================== }}}
 
 " Source project custom settings.
-silent! so .vim/.exrc
-
-" GUI options (neovide)
-set guioptions=Pe
-set guifont=Victor\ Mono:h18:cANSI:qDRAFT
+let g:enable_project_rc = 1
+if (g:enable_project_rc)
+    silent! so .vim/.exrc
+endif
 
 " vim:set ft=vim et sw=4 foldmethod=marker nowrap fo=cql:

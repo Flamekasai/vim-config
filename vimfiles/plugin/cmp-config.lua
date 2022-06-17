@@ -27,17 +27,19 @@ cmp.setup({
       ['<C-l>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.confirm({ select = true })
-        else
-          if luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          else
-            fallback()
-          end
+        -- else
+          -- if luasnip.expand_or_locally_jumpable() then
+            -- luasnip.expand_or_jump()
+          -- else
+            -- fallback()
+          -- end
         end
       end, { 'i', 'c' }),
-      ['<C-Space>'] = cmp.mapping(function(fallback)
-          if luasnip.expand_or_jumpable() then
+      ['<C-]>'] = cmp.mapping(function(fallback)
+          if luasnip.expand_or_locally_jumpable() then
               luasnip.expand_or_jump()
+          else
+              fallback()
           end
       end, { 'i', 'c' }),
     -- ['<C-Space>'] = cmp.mapping.complete() -- Show completion with ctr-space
