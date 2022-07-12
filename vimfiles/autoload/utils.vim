@@ -101,17 +101,31 @@ function! utils#GetRandomColorscheme() abort
 endfunction
 
 function! utils#ChangeHighlights() abort
+    hi! link SignColumn LineNr
+
+    " Make floating and complete menus same color as background
+    hi! clear FloatBorder
+    hi! link FloatBorder Normal
+    hi! link Pmenu Normal
+    hi! link DiagnosticSignError DiagnosticError
+    hi! link DiagnosticSignWarn DiagnosticWarn
+    hi! link DiagnosticSignHint DiagnosticHint
+    hi! link DiagnosticSignInfo DiagnosticInfo
+
     if (g:colors_name == 'base16-papercolor-dark')
         hi! link LineNr WarningMsg
         hi! link CursorLineNr SpecialKey
         hi! link StatusLine TermCursor
         hi! link StatusLineNC TermCursorNC
+        hi! link TabLine TermCursorNC
+        hi! link TabLineFill TermCursorNC
+        hi! link TabLineSel TermCursor
         hi! link SignColumn LineNr
         hi! link VertSplit Normal
-        syn sync fromstart
     elseif (g:colors_name == 'gruvbox')
         hi! Visual  gui=NONE guibg=#3c3836
     endif
+    " syntax sync fromstart
     " highlight clear Search | highlight Search term=underline cterm=underline ctermfg=14 gui=underline guifg=#bf5656
 
     if (g:enable_transparent_bg == 1)

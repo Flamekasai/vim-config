@@ -9,7 +9,7 @@ set runtimepath+=$HOME/vim-config/vimfiles/after
 let &packpath=&runtimepath
 
 augroup CustomFT
-    au!
+    au! CustomFT
     autocmd BufNewFile,BufRead *.aspx set ft=aspx
     autocmd BufNewFile,BufRead *.pl set ft=prolog
     autocmd BufNewFile,BufRead *.asm set ft=asm
@@ -77,7 +77,7 @@ let mapleader=" "
     set smartcase
 
     " Highlight all search matches. ( default )
-    set hlsearch
+    set nohlsearch
 
 "  ============================================================================ }}}
 
@@ -185,19 +185,7 @@ let mapleader=" "
     set noshowmode
 
     " Defines how some messages are displayed.
-    set shortmess=f
-    set shortmess+=m
-    set shortmess+=n
-    set shortmess+=r
-    set shortmess+=w
-    set shortmess+=x
-    set shortmess+=o
-    set shortmess+=O
-    set shortmess+=t
-    set shortmess+=T
-    set shortmess+=s
-    set shortmess+=I
-    set shortmess+=c
+    set shortmess=fmnrwxoOtTsIc
 
     " No beeps when you do something wrong.
     set belloff=all
@@ -418,19 +406,6 @@ let mapleader=" "
         nnoremap <leader>bw :bw!<CR>
         nnoremap <leader>bW :%bw!<CR>
 
-        " LSP
-        augroup LSPCustomColors
-            autocmd! LSPCustomColors
-            autocmd Colorscheme base16-* hi! link LineNr Normal
-            autocmd Colorscheme * hi! link SignColumn LineNr
-            " Make floating and complete menus same color as background
-            autocmd Colorscheme * hi! clear FloatBorder | hi! link FloatBorder Normal | hi! link Pmenu Normal
-            autocmd Colorscheme * hi! link DiagnosticSignError DiagnosticError
-            autocmd Colorscheme * hi! link DiagnosticSignWarn DiagnosticWarn
-            autocmd Colorscheme * hi! link DiagnosticSignHint DiagnosticHint
-            autocmd Colorscheme * hi! link DiagnosticSignInfo DiagnosticInfo
-        augroup END
-
         " Vimwiki
         nnoremap <silent> <leader>ww :VimwikiIndex<CR>
 
@@ -464,6 +439,7 @@ let mapleader=" "
     let g:enable_transparent_bg = 0
     augroup ChangeHighlights
         autocmd! ChangeHighlights
+        autocmd Colorscheme base16-* hi! link LineNr Normal
         autocmd Colorscheme * call utils#ChangeHighlights()
     augroup END
 
@@ -481,7 +457,7 @@ let mapleader=" "
 " ============================================== }}}
 
 " Source project custom settings.
-let g:enable_project_rc = 1
+let g:enable_project_rc = 0
 if (g:enable_project_rc)
     silent! so .vim/.exrc
 endif
