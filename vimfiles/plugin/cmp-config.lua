@@ -8,7 +8,6 @@ cmp.setup({
       end,
     },
     window = {
-
       completion = { border = "rounded" },
       documentation = { border = "rounded" },
     },
@@ -27,12 +26,6 @@ cmp.setup({
       ['<C-l>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.confirm({ select = true })
-        -- else
-          -- if luasnip.expand_or_locally_jumpable() then
-            -- luasnip.expand_or_jump()
-          -- else
-            -- fallback()
-          -- end
         end
       end, { 'i', 'c' }),
       ['<C-]>'] = cmp.mapping(function(fallback)

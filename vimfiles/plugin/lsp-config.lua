@@ -1,7 +1,11 @@
 vim.diagnostic.config({ virtual_text = false, underline = true, float = { border = "rounded" } })
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-    vim.lsp.handlers.hover, { border = "rounded" })
+local open_floating_fallback = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or "rounded"
+  return open_floating_fallback(contents, syntax, opts, ...)
+end
 
 local opts = { noremap=true, silent=true }
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
