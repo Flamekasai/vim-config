@@ -433,10 +433,10 @@ let mapleader=" "
 " === Colorscheme ================================== {{{
 
     " Define signs for diagnostics
-    sign define DiagnosticSignError text=✕ numhl=DiagnosticSignError
-    sign define DiagnosticSignWarn text=⚠ numhl=DiagnosticSignWarn
-    sign define DiagnosticSignInfo text=🛈 numhl=DiagnosticSignInfo
-    sign define DiagnosticSignHint text=🛈 numhl=DiagnosticSignHint
+    sign define DiagnosticSignError texthl=DiagnosticSignError numhl=DiagnosticSignError text=✕
+    sign define DiagnosticSignWarn texthl=DiagnosticSignWarn numhl=DiagnosticSignWarn   text=⚠
+    sign define DiagnosticSignInfo texthl=DiagnosticSignInfo numhl=DiagnosticSignInfo   text=🛈
+    sign define DiagnosticSignHint texthl=DiagnosticSignHint numhl=DiagnosticSignHint   text=🛈
 
     " For dark terminal windows and hybrid colorschemes dark.
     set background=dark
