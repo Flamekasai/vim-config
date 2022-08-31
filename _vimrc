@@ -52,7 +52,8 @@ augroup END
 
     Plug 'gruvbox-community/gruvbox'
     Plug 'chriskempson/base16-vim'
-    Plug 'flazz/vim-colorschemes'
+    " Plug 'flazz/vim-colorschemes'
+    Plug 'rafi/awesome-vim-colorschemes'
     Plug 'vim-conf-live/vimconflive2021-colorscheme'
     call plug#end()
     set shellslash
