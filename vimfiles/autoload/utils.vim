@@ -70,7 +70,8 @@ function! utils#MyStatusLine() abort
     let s = ' '
     let s .= '[%{toupper(g:mode_names[mode("fullnames")])}]'
     let s .= '%='
-    let s .= '%f %(%q%w%h%r%m%)'
+    " Change %t to %.35f to have full path limited to 35 chars
+    let s .= '%t %(%q%w%h%r%m%)'
     let s .= '%='
     if exists('g:loaded_fugitive') && !empty(FugitiveHead())
         let s .= '[%{FugitiveHead()}] '
@@ -85,11 +86,7 @@ function! utils#GetRandomColorscheme() abort
     let favouriteColors = []
 
     let favouriteColors = readfile(expand('$HOME') . '/vim-config/vimfiles/favouriteColors.colors')
-    if has('win32')
-        let randomOffset = system('echo %random%')
-    elseif has('unix')
-        let randomOffset = system('echo $RANDOM')
-    endif
+    let randomOffset = rand()
 
     let limit = len(favouriteColors)
     let randomOffset = randomOffset % limit
