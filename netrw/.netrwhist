@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/usr/share/nvim/runtime'
+let g:netrw_dirhist_9='/usr/share/nvim/runtime/spell'
+let g:netrw_dirhist_8='/usr/share/nvim/runtime'
+let g:netrw_dirhist_7='/data/home/Downloads'
+let g:netrw_dirhist_6='/data/home/Downloads/vim'
+let g:netrw_dirhist_5='D:/home/Downloads/vim'
+let g:netrw_dirhist_4='D:/home/Downloads/vim/lua/flamekasai/plugins'
+let g:netrw_dirhist_3='D:/home/Downloads/vim/lua/flamekasai'
+let g:netrw_dirhist_2='D:/home/Downloads/vim/lua'
+let g:netrw_dirhist_1='D:/home/Downloads/vim/lua/flamekasai'

@@ -1,0 +1,4 @@
+- [<space> and ]<space> repeat comment string if line is commented, avoid that.
+- No autocompletion, only manually triggered
+- separate nvim and vim config
+- Some utils are for both, some only for neovim (choose what to share)
