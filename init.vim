@@ -4,7 +4,7 @@ let vim_path = expand('<sfile>:p:h')
 let border_type = 'rounded'
 
 " 'none', 'favorites', 'light', any other value == favoriteColors + randomColors
-let random_colors = 'favorites'
+let random_colors = 'none'
 let transparent_bg = v:false
 
 let mapleader = ' '
