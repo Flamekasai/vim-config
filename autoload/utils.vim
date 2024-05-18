@@ -8,15 +8,15 @@ function! utils#RemoveTrailingWhitespace() abort
 endfunction
 
 function! utils#MyTabLine() abort
-    let s = ''
+    let l:s = ''
     for i in range(tabpagenr('$'))
-        let s .= '%#TabLineFill# '
+        let l:s .= '%#TabLineFill# '
         if i + 1 == tabpagenr()
-            let s .= '%#TabLineSel# '
+            let l:s .= '%#TabLineSel# '
         else
-            let s .= '%#TabLine# '
+            let l:s .= '%#TabLine# '
         endif
-        let s .= i + 1
+        let l:s .= i + 1
         " Comment This to only have numbers "
         "==================================="
         " let buffersInTab = tabpagebuflist(i + 1)
@@ -30,7 +30,7 @@ function! utils#MyTabLine() abort
         " let s .= firstBufferInTab . ' '
         "==================================="
     endfor
-    let s .= '%#TabLineFill#%T'
+    let l:s .= '%#TabLineFill#%T'
     return s
 endfunction
 
@@ -68,45 +68,49 @@ let g:mode_names = {
             \ }
 
 function! utils#FlamekasaiStatusLine() abort
-    let s = '%#StatusLineMode# '
-    let s .= '%{toupper(g:mode_names[mode("fullnames")])} '
-    let s .= '%#StatusLine#'
-    let s .= '%<'
+    let l:s = '%#StatusLineMode# '
+    let l:s .= '%{toupper(g:mode_names[mode("fullnames")])} '
+    let l:s .= '%#StatusLine#'
+    let l:s .= '%<'
     if has('nvim')
-        let s.= '%='
+        let l:s.= '%='
     endif
     " Change %t to %.35f to have full path limited to 35 chars
-    let s .= '%f %(%q%w%h%r%m%)'
-    let s .= '%='
+    let l:s .= '%f %(%q%w%h%r%m%)'
+    let l:s .= '%='
     if exists('loaded_fugitive')
-        let s .= '%#StatusLineMode#'
-        let s .= '%{FugitiveIsGitDir() ? (' ' . FugitiveHead() . ' ') : ''}'
+        let l:s .= '%#StatusLineMode#'
+        let l:s .= '%{FugitiveIsGitDir() ? (' ' . FugitiveHead() . ' ') : ''}'
     endif
-    let s .= '%#StatusLineInfo# '
+    let l:s .= '%#StatusLineInfo# '
     if !empty(&filetype)
-        let s .= '%{&filetype} '
+        let l:s .= '%{&filetype} '
     endif
-    let s .= '%l/%L '
+    let l:s .= '%l/%L '
     return s
 endfunction
 
 function! utils#SetRandomColorscheme(random_group) abort
-    let colors = readfile(g:vim_path . '/favorite.colors')
+    let l:colors = readfile(g:vim_path . '/favorite.colors')
     if (a:random_group ==? 'light')
-        let colors = readfile(g:vim_path . '/light.colors')
+        let l:colors = readfile(g:vim_path . '/light.colors')
     elseif (a:random_group !=? 'favorites')
         call extend(colors, readfile(g:vim_path . '/random.colors'))
     endif
 
-    let randomOffset = rand()
-    let limit = len(colors)
-    let randomOffset = randomOffset % limit
+    let l:randomOffset = rand()
+    let l:limit = len(colors)
+    let l:randomOffset = randomOffset % limit
     execute 'colorscheme ' . colors[randomOffset]
 
     call utils#ChangeHighlights()
 
     echomsg 'colorscheme: ' . g:colors_name
     unlet colors
+endfunction
+
+function! utils#RandomColorsCompletion(ArgLead, CmdLine, CursorPos) abort
+    return "random\nfavorites\nlight"
 endfunction
 
 function! utils#ChangeHighlights() abort

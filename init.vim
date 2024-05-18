@@ -29,12 +29,12 @@ let &runtimepath = join(s:rtp, ',')
 unlet s:rtp
 unlet s:config_path
 
+set nocompatible
+syntax on
+filetype plugin indent on
+
 if has('nvim')
     lua require('flamekasai.plugins')
-else
-    set nocompatible
-    syntax on
-    filetype plugin indent on
 endif
 
 execute 'source ' .. g:vim_path .. '/options.vim'

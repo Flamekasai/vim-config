@@ -26,4 +26,4 @@ vim.g.vimwiki_listsyms=' .oOx'
 vim.g.vimwiki_table_auto_fmt = 1
 vim.g.vimwiki_hl_cb_checked = 2
 vim.g.vimwiki_hl_headers = 0
-vim.g.vimwiki_conceallevel = 0
+-- vim.g.vimwiki_conceallevel = 0

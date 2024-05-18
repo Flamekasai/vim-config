@@ -1,5 +1,6 @@
 " TODO look in windows for shellslash category and check completeslash
 
+" TODO Check all options for independency of defaults
 " TODO check all the posible cpoptions
 set cpoptions=aABceFs
 
@@ -23,18 +24,19 @@ set relativenumber
 " SYNTAX, HIGHLIGHTING AND SPELLING
 
 set nohlsearch
+set termguicolors
 set nocursorline
 set spelllang=es,en
 
 " MULTIPLE WINDOWS
 
+set laststatus=2
 if !has('nvim')
-    set laststatus=2
     set ruler
     let &statusline=" %t %r %m%=%y %l:%L "
 else
-    set smoothscroll " TODO move to its place when both in vim and neovm
-    set laststatus=2
+    " TODO Do when 0.10.0 is stable
+        " set smoothscroll " TODO move to its place when both in vim and neovm
     set statusline=%!utils#FlamekasaiStatusLine()
 endif
 set hidden
