@@ -97,17 +97,10 @@ local function setup_server(server)
   require('lspconfig')[server].setup(config_table)
 end
 
+local servers = {'clangd', 'tsserver', 'sourcekit', 'pylsp', 'intelephense', 'jdtls', 'emmet_ls'}
 if utils.is_plugin_loaded('mason-lspconfig.nvim') then
-  local mason = require('mason-lspconfig')
-  mason.setup_handlers {
-    function(server)
-      setup_server(server)
-    end
-  }
-else
-  local servers = {'clangd', 'tsserver', 'sourcekit', 'pylsp', 'intelephense', 'jdtls', 'emmet_ls'}
-  for _, server in pairs(servers) do
-    setup_server(server)
-  end
+  servers = require('mason-lspconfig').get_installed_servers()
 end
-
+for _, server in pairs(servers) do
+  setup_server(server)
+end
