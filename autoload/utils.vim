@@ -87,6 +87,7 @@ function! utils#FlamekasaiStatusLine() abort
         let l:s .= '%{&filetype} '
     endif
     let l:s .= '%l/%L '
+    let l:s .= '%#StatusLine#'
     return s
 endfunction
 
