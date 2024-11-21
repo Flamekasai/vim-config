@@ -28,7 +28,8 @@ require("lazy").setup({
       {
         'williamboman/mason-lspconfig.nvim',
         lazy = false,
-        config = true
+        config = true,
+        priority = 49
       },
       {
         'williamboman/mason.nvim',
@@ -57,7 +58,7 @@ require("lazy").setup({
   'nvim-lua/plenary.nvim',
   'nvim-telescope/telescope.nvim',
 
-  'nvim-treesitter/nvim-treesitter', -- TODO: {'do': ':TSUpdate'}
+  --'nvim-treesitter/nvim-treesitter', -- TODO: {'do': ':TSUpdate'}
   'sheerun/vim-polyglot',
 
   {
@@ -67,7 +68,12 @@ require("lazy").setup({
     end
   },
 
-  'RRethy/nvim-base16',
+  {
+      'RRethy/nvim-base16',
+      init = function()
+          vim.g.loaded_nvim_base16 = true
+      end
+  },
   'gruvbox-community/gruvbox',
   'lifepillar/vim-solarized8',
 }, {

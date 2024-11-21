@@ -20,4 +20,5 @@ loadkeymap
 'o	ó
 'u	ú
 'n	ñ
+'?	¿
 ''	'

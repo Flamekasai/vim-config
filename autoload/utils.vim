@@ -106,6 +106,7 @@ function! utils#SetRandomColorscheme(random_group) abort
 
     call utils#ChangeHighlights()
 
+    redraw
     echomsg 'colorscheme: ' . g:colors_name
     unlet colors
 endfunction

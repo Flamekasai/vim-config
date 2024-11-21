@@ -48,6 +48,9 @@ endif
 if exists('loaded_netrwPlugin')
     nnoremap <leader>e  <cmd>Explore<cr>
     nnoremap <leader>vh <cmd>execute 'e ' .. g:vim_path<cr>
-    nnoremap <leader>vo <cmd>execute 'e ' .. g:vim_path .. '/options.vim'<cr>
-    nnoremap <leader>vm <cmd>execute 'e ' .. g:vim_path .. '/mappings.vim'<cr>
 endif
+nnoremap <leader>vo <cmd>execute 'e ' .. g:vim_path .. '/options.vim'<cr>
+nnoremap <leader>vm <cmd>execute 'e ' .. g:vim_path .. '/mappings.vim'<cr>
+
+nnoremap <ScrollWheelUp> <c-y>
+nnoremap <ScrollWheelDown> <c-e>

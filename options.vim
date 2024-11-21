@@ -17,6 +17,7 @@ set smartcase
 set nowrap
 set fillchars=
 set lazyredraw
+set nolist
 set listchars=eol:$,tab:>\ ,trail:-,nbsp:+,precedes:<,extends:>
 set number
 set relativenumber
@@ -25,20 +26,13 @@ set relativenumber
 
 set nohlsearch
 set termguicolors
-set nocursorline
+set cursorline
 set spelllang=es,en
 
 " MULTIPLE WINDOWS
 
 set laststatus=2
-if !has('nvim')
-    set ruler
-    let &statusline=" %t %r %m%=%y %l:%L "
-else
-    " TODO Do when 0.10.0 is stable
-        " set smoothscroll " TODO move to its place when both in vim and neovm
-    set statusline=%!utils#FlamekasaiStatusLine()
-endif
+let &statusline="%#StatusLineMode# %t%{!&modifiable || &modified || &readonly ? ' ' : ''}%m%r %##%=%=%#StatusLineInfo#%{&ft != '' ? ' ' : ''}%{&filetype} %l/%L %##"
 set hidden
 set nosplitbelow " TODO Maybe no
 set nosplitright " TODO Maybe no
@@ -52,6 +46,7 @@ set mousem=popup_setpos
 
 set shortmess=finxoOtTAF
 set showcmd
+set ruler
 set belloff=all
 
 " SELECTING TEXT
@@ -60,6 +55,7 @@ set selection=inclusive " TODO Maybe 'old'?
 
 " EDITING TEXT
 
+set completeopt=menu
 set noshowmatch
 set nojoinspaces
 set nrformats=bin,hex
@@ -77,7 +73,6 @@ set autoindent
 " READING AND WRITING FILES
 
 set nomodeline
-set fileformats=unix,dos
 set autoread
 
 " THE SWAP FILE
@@ -86,11 +81,17 @@ set swapfile
 
 " COMMAND LINE EDITING
 
-set wildmode=longest,list:full
+" set wildmode=longest:list,full
+set wildmode=full
 set wildoptions=tagfile
 set wildignorecase
-set nowildmenu
+" set nowildmenu
+set wildmenu
 set cmdwinheight=20 " Maybe default of 7?
+
+" QUICKFIX
+
+set grepformat+=%f
 
 " VARIOUS
 
@@ -99,7 +100,10 @@ set signcolumn=yes
 
 " COLORSCHEMES AND SIGNS
 
-colorscheme solarized8_flat
+if exists('loaded_nvim_base16')
+    let g:random_colors="all"
+    " colorscheme base16-horizon-terminal-dark
+endif
 
 sign define DiagnosticSignInfo    text=┃ texthl=DiagnosticSignInfo
 sign define DiagnosticSignHint    text=┃ texthl=DiagnosticSignHint
