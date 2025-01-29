@@ -1,5 +1,4 @@
 local cmp = require('cmp')
-local luasnip = require('luasnip')
 
 local modes = {'i'}
 
@@ -22,55 +21,64 @@ local mappings = {
       fallback()
     end
   end, modes),
-  ['<c-]>'] = cmp.mapping(function(fallback)
-    if luasnip.expand_or_locally_jumpable() then
-      luasnip.expand_or_jump()
-    else
-      fallback()
-    end
-  end, modes),
 }
 
-local all_buffers_source = {
-  name = 'buffer',
-  option = {
-    get_bufnrs = function()
-      return vim.api.nvim_list_bufs()
-    end
+
+local buffers_and_path = {
+  {
+    name = 'buffer',
+    option = {
+      get_bufnrs = function()
+        return vim.api.nvim_list_bufs()
+      end
+    }
+  },
+  {
+    name = 'path'
   }
 }
 
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
+local advanced_sources = {
+    { name = 'nvim_lsp' }
+}
+
+if vim.fn.exists("g:loaded_cmp_luasnip") then
+  local ok, luasnip = pcall(require, 'luasnip')
+  if ok then
+    table.insert(advanced_sources, { name = 'luasnip' })
+    mappings['<c-]>'] = cmp.mapping(function(fallback)
+      if luasnip.expand_or_locally_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, modes)
+  end
+end
+
+local options = {
   window = {
     completion = { border = vim.g.border_type },
     documentation = { border = vim.g.border_type },
   },
   mapping = mappings,
-  sources = cmp.config.sources(
-  {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-  },
-  {
-    all_buffers_source,
-    { name = 'path' }
-  }
-  ),
+  sources = cmp.config.sources(advanced_sources, buffers_and_path),
   completion = {
-    autocomplete = false,
+    -- autocomplete = false,
     keyword_length = 3,
   },
   experimental = { ghost_text = true },
-})
+}
 
-cmp.setup.filetype({ 'vimwiki', 'markdown'}, {
-  sources = {
-    all_buffers_source,
-    { name = 'path' },
-  }
-})
+if vim.fn.exists("g:loaded_cmp_luasnip") then
+  local ok, luasnip = pcall(require, 'luasnip')
+  if ok then
+    options.snippet = {
+      expand = function(args)
+        luasnip.lsp_expand(args.body)
+      end
+    }
+  end
+end
+
+cmp.setup(options)

@@ -41,8 +41,9 @@ if exists('loaded_telescope')
     nnoremap <leader>ff <cmd>Telescope find_files<cr>
     nnoremap <leader>fb <cmd>Telescope buffers<cr>
     nnoremap <leader>fg <cmd>Telescope git_files<cr>
+    nnoremap <leader>fd <cmd>Telescope diagnostics<cr>
 else
-    nnoremap <leader>fb <cmd>b<space>
+    nnoremap <leader>fb :b<space>
 endif
 
 if exists('loaded_netrwPlugin')

@@ -16,8 +16,6 @@ require("lazy").setup({
   'tpope/vim-fugitive',
   'tpope/vim-repeat',
   'tpope/vim-surround',
-  -- 'tpope/vim-uninpaired',
-  -- 'tpope/vim-dispatch',
 
   {
     'neovim/nvim-lspconfig',
@@ -27,14 +25,16 @@ require("lazy").setup({
     dependencies = {
       {
         'williamboman/mason-lspconfig.nvim',
-        lazy = false,
+        init = function()
+          vim.g.loaded_mason_lspconfig = true
+        end,
         config = true,
-        priority = 49
-      },
-      {
-        'williamboman/mason.nvim',
-        lazy = false,
-        config = true
+        dependencies = {
+          {
+            'williamboman/mason.nvim',
+            config = true
+          }
+        }
       },
     }
   },
@@ -44,15 +44,27 @@ require("lazy").setup({
       require('flamekasai.plugins.cmp')
     end,
     dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
-      'saadparwaiz1/cmp_luasnip',
       {
-          "L3MON4D3/LuaSnip",
-          build = "make install_jsregexp"
+        'hrsh7th/cmp-nvim-lsp',
+        init = function()
+          vim.g.loaded_cmp_lsp = true
+        end
       },
+      {
+        'saadparwaiz1/cmp_luasnip',
+        init = function()
+          vim.g.loaded_cmp_luasnip = true
+        end,
+        dependencies = {
+          {
+              "L3MON4D3/LuaSnip",
+              build = "make install_jsregexp"
+          }
+        }
       }
+    }
   },
 
   'nvim-lua/plenary.nvim',
@@ -74,8 +86,6 @@ require("lazy").setup({
           vim.g.loaded_nvim_base16 = true
       end
   },
-  'gruvbox-community/gruvbox',
-  'lifepillar/vim-solarized8',
 }, {
   root = vim.g.vim_path .. '/lazy/',
   lockfile = vim.g.vim_path .. '/lazy/lock-package.json',
