@@ -6,19 +6,12 @@ augroup FlamekasaiAutocommands
         endif
         autocmd VimEnter * command -complete=custom,utils#RandomColorsCompletion -nargs=? RandomColorscheme call utils#SetRandomColorscheme(<q-args>)
         autocmd VimEnter,Colorscheme * lua require('flamekasai.utils').colorize_statusline()
-
-        if has('nvim-0.10.0')
-            " Neovim added this mapping GLOBALLY for lsp.codeactions on
-            " default mappings WTF
-            echomsg "this works"
-            autocmd VimEnter * nunmap crr
-            autocmd VimEnter * nunmap crn
-            autocmd VimEnter * vunmap crr
-        endif
     endif
     autocmd Colorscheme * call utils#ChangeHighlights()
     autocmd BufWritePre * call utils#RemoveTrailingWhitespace()
 
     " Custom filetypes
     autocmd BufRead,BufNewFile *.colors set filetype=colors
+
+    autocmd FileType vimwiki set syntax=pandoc
 augroup END

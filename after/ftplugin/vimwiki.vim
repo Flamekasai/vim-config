@@ -1,10 +1,10 @@
 let b:undo_ftplugin = "setlocal spell< keymap= formatoptions< textwidth< colorcolumn<"
-setlocal spell keymap=spanish-custom formatoptions-=o textwidth=72 colorcolumn=+1
+setlocal spell formatoptions-=o textwidth=72 colorcolumn=+1
 
 nnoremap <buffer> <unique> <leader>z 1z=
 let b:undo_ftplugin .= " | nunmap <buffer> <leader>z"
 
-hi! link VimwikiBold string
-hi! link VimwikiItalic character
-hi! link VimwikiBoldItalic function
+hi! link VimwikiBold String
+hi! link VimwikiItalic Character
+hi! link VimwikiBoldItalic Function
 hi! link VimwikiHeaderChar Title

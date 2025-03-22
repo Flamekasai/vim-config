@@ -32,7 +32,7 @@ set spelllang=es,en
 " MULTIPLE WINDOWS
 
 set laststatus=2
-let &statusline="%#StatusLineMode# %t%{!&modifiable || &modified || &readonly ? ' ' : ''}%m%r %##%=%=%#StatusLineInfo#%{&ft != '' ? ' ' : ''}%{&filetype} %l/%L %##"
+set statusline=%!utils#FlamekasaiStatusLine()
 set hidden
 set nosplitbelow " TODO Maybe no
 set nosplitright " TODO Maybe no
@@ -97,6 +97,12 @@ set grepformat+=%f
 
 set virtualedit=block " Maybe a mapping that toggles '' and 'all'
 set signcolumn=yes
+
+" FILETYPE OPTIONS
+
+let g:pandoc#syntax#codeblocks#embeds#use = 1
+let g:pandoc#syntax#conceal#blacklist = ["block"]
+let g:pandoc#syntax#codeblocks#embeds#langs = ["cpp", "sh"]
 
 " COLORSCHEMES AND SIGNS
 

@@ -57,6 +57,7 @@ require("lazy").setup({
         init = function()
           vim.g.loaded_cmp_luasnip = true
         end,
+        cond = false,
         dependencies = {
           {
               "L3MON4D3/LuaSnip",
@@ -76,7 +77,7 @@ require("lazy").setup({
   {
     'vimwiki/vimwiki',
     init = function()
-      require('flamekasai.plugins.vimwiki')
+      vim.cmd.source(vim.g.vim_path .. "/plugin/vimwiki.vim")
     end
   },
 
