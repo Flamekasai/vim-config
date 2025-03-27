@@ -23,4 +23,4 @@ let g:vimwiki_listsyms = ' .oOx'
 let g:vimwiki_table_auto_fmt = 1
 let g:vimwiki_hl_cb_checked = 2
 let g:vimwiki_hl_headers = 0
-let g:vimwiki_conceallevel = 0
+let g:vimwiki_conceallevel = 2

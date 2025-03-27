@@ -1,4 +1,4 @@
-let b:undo_ftplugin = "setlocal spell< keymap= formatoptions< textwidth< colorcolumn<"
+let b:undo_ftplugin = "setlocal spell< formatoptions< textwidth< colorcolumn<"
 setlocal spell formatoptions-=o textwidth=72 colorcolumn=+1
 
 nnoremap <buffer> <unique> <leader>z 1z=

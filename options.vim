@@ -103,12 +103,13 @@ set signcolumn=yes
 let g:pandoc#syntax#codeblocks#embeds#use = 1
 let g:pandoc#syntax#conceal#blacklist = ["block"]
 let g:pandoc#syntax#codeblocks#embeds#langs = ["cpp", "sh"]
+let g:pandoc#syntax#protect#codeblocks = 0
 
 " COLORSCHEMES AND SIGNS
 
 if exists('loaded_nvim_base16')
-    let g:random_colors="all"
-    " colorscheme base16-horizon-terminal-dark
+    " let g:random_colors="all"
+    colorscheme base16-gruvbox-dark-medium
 endif
 
 sign define DiagnosticSignInfo    text=┃ texthl=DiagnosticSignInfo

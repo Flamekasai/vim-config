@@ -72,7 +72,12 @@ require("lazy").setup({
   'nvim-telescope/telescope.nvim',
 
   --'nvim-treesitter/nvim-treesitter', -- TODO: {'do': ':TSUpdate'}
-  'sheerun/vim-polyglot',
+  {
+      'sheerun/vim-polyglot',
+      init = function()
+        vim.cmd.source(vim.g.vim_path .. "/plugin/polyglot.vim")
+      end
+  },
 
   {
     'vimwiki/vimwiki',
