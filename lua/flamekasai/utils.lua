@@ -4,39 +4,6 @@ M.is_plugin_loaded = function(plugin)
   return plugins[plugin] and plugins[plugin]._.installed
 end
 
-local mode_names = {
-  ['n']    = 'normal',
-  ['no']   = 'normal',
-  ['nov']  = 'normal',
-  ['noV']  = 'normal',
-  ['no'] = 'normal',
-  ['niI']  = 'normal',
-  ['niR']  = 'normal',
-  ['niV']  = 'normal',
-  ['v']    = 'visual',
-  ['V']    = 'v-line',
-  ['']   = 'v-block',
-  ['s']    = 'select',
-  ['S']    = 's-line',
-  ['']   = 's-block',
-  ['i']    = 'insert',
-  ['ic']   = 'insert',
-  ['ix']   = 'insert',
-  ['R']    = 'replace',
-  ['Rc']   = 'replace',
-  ['Rv']   = 'v-replace',
-  ['Rx']   = 'replace',
-  ['c']    = 'command',
-  ['cv']   = 'ex-mode',
-  ['ce']   = 'ex-mode',
-  ['r']    = 'hit-enter',
-  ['rm']   = 'more',
-  ['r?']   = 'confirm',
-  ['!']    = 'shell',
-  ['t']    = 'terminal',
-  ['nt']   = 'terminal'
-}
-
 M.colorize_statusline = function()
   local global_highlights = 0
   local mode_style = vim.api.nvim_get_hl(global_highlights, {name = 'Keyword', link = false})
@@ -45,27 +12,6 @@ M.colorize_statusline = function()
   info_style.reverse = true
   vim.api.nvim_set_hl(global_highlights, 'StatusLineMode', mode_style)
   vim.api.nvim_set_hl(global_highlights, 'StatusLineInfo', info_style)
-end
-
-vim.g.FlamekasaiStatusLine = function()
-  local lineString = {}
-
-  table.insert(lineString, '%#StatusLineMode# ')
-  table.insert(lineString, vim.fn.toupper(mode_names[vim.fn.mode('fullmode')]) .. ' ')
-  table.insert(lineString, '%#StatusLine# %<%=')
-  table.insert(lineString, '%f %(%q%w%h%r%m%) %=')
-  table.insert(lineString, '%S ')
-  if M.is_plugin_loaded('vim-fugitive') then
-      -- let contents .= '%#StatusLineBranch#'
-      table.insert(lineString, '%#StatusLineMode#')
-      table.insert(lineString, [[%{FugitiveIsGitDir() ? (' ' . FugitiveHead() . ' ') : ''}]])
-  end
-  table.insert(lineString, '%#StatusLineInfo# ')
-  if (vim.bo.filetype ~= '') then
-    table.insert(lineString, '%{&ft} ')
-  end
-  table.insert(lineString, '%l:%L ')
-  return table.concat(lineString)
 end
 
 M.random_colorscheme = function(only_favorites)

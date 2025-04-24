@@ -38,36 +38,6 @@ require("lazy").setup({
       },
     }
   },
-  {
-    'hrsh7th/nvim-cmp',
-    config = function()
-      require('flamekasai.plugins.cmp')
-    end,
-    dependencies = {
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      {
-        'hrsh7th/cmp-nvim-lsp',
-        init = function()
-          vim.g.loaded_cmp_lsp = true
-        end
-      },
-      {
-        'saadparwaiz1/cmp_luasnip',
-        init = function()
-          vim.g.loaded_cmp_luasnip = true
-        end,
-        cond = false,
-        dependencies = {
-          {
-              "L3MON4D3/LuaSnip",
-              build = "make install_jsregexp"
-          }
-        }
-      }
-    }
-  },
-
   'nvim-lua/plenary.nvim',
   'nvim-telescope/telescope.nvim',
 
