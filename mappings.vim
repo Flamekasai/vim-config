@@ -1,16 +1,20 @@
 nnoremap <leader>s          <cmd>write<cr>
-nnoremap Y                  y$
 
-nnoremap [a                 <cmd>previous<cr>
-nnoremap ]a                 <cmd>next<cr>
-nnoremap [A                 <cmd>first<cr>
-nnoremap ]A                 <cmd>last<cr>
+if !has('nvim') " This are default in neovim 0.11
+    nnoremap Y                  y$
+    nnoremap [a                 <cmd>previous<cr>
+    nnoremap ]a                 <cmd>next<cr>
+    nnoremap [A                 <cmd>first<cr>
+    nnoremap ]A                 <cmd>last<cr>
+    nnoremap <expr> [<space>    "m'" .. v:count1 .. "O<esc>``"
+    nnoremap <expr> ]<space>    "m'" .. v:count1 .. "o<esc>``"
+endif
 
-nnoremap <expr> [<space>    "m'" .. v:count1 .. "O<esc>``"
-nnoremap <expr> ]<space>    "m'" .. v:count1 .. "o<esc>``"
 nnoremap [e                 :move -2<cr>
-nnoremap ]e                 :move +2<cr>
+nnoremap ]e                 :move +1<cr>
 
+nnoremap n                  nzz
+nnoremap N                  Nzz
 nnoremap <c-k>              <cmd>cprevious<cr>zz
 nnoremap <c-j>              <cmd>cnext<cr>zz
 
@@ -21,9 +25,9 @@ nnoremap [h                 <cmd>set hlsearch! <bar> echo "highlight search = " 
 " Maybe if you use ijump or [I a lot
 " nnoremap [I :ilist <c-r><c-w><cr>:ijump <c-r><c-w><s-left><left><space>
 
-nnoremap [d                 <cmd>lua vim.diagnostic.goto_prev()<cr>
-nnoremap ]d                 <cmd>lua vim.diagnostic.goto_next()<cr>
-nnoremap <leader>ld         <cmd>lua vim.diagnostic.setqflist()<cr>
+if has('nvim')
+    nnoremap <leader>ld         <cmd>lua vim.diagnostic.setqflist()<cr>
+endif
 
 " xnoremap K              :move '<-2<cr>gv=gv
 " xnoremap J              :move '>+1<cr>gv=gv
@@ -53,5 +57,6 @@ endif
 nnoremap <leader>vo <cmd>execute 'e ' .. g:vim_path .. '/options.vim'<cr>
 nnoremap <leader>vm <cmd>execute 'e ' .. g:vim_path .. '/mappings.vim'<cr>
 
-nnoremap <ScrollWheelUp> <c-y>
-nnoremap <ScrollWheelDown> <c-e>
+if exists('loaded_vimwiki')
+    nnoremap <leader>w <cmd>VimwikiIndex<cr>
+endif

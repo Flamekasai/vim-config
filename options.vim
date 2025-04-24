@@ -37,6 +37,10 @@ set hidden
 set nosplitbelow " TODO Maybe no
 set nosplitright " TODO Maybe no
 
+if has('nvim')
+    set winborder=rounded
+endif
+
 " USING THE MOUSE
 
 set mouse=nvi

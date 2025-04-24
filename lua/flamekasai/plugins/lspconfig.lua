@@ -1,21 +1,25 @@
 vim.diagnostic.config({
-  virtual_text = true,
-  -- virtual_lines = true,
+  -- virtual_text = true,
+  virtual_lines = true,
   underline = true,
-  float = { border = vim.g.border_type }
+  jump = {
+    float = true
+  },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '┃',
+      [vim.diagnostic.severity.WARN]  = '┃',
+      [vim.diagnostic.severity.INFO]  = '┃',
+      [vim.diagnostic.severity.HINT]  = '┃',
+    },
+    numhl = {
+      [vim.diagnostic.severity.ERROR] = 'DiagnosticError',
+      [vim.diagnostic.severity.WARN]  = 'DiagnosticWarn',
+      [vim.diagnostic.severity.INFO]  = 'DiagnosticInfo',
+      [vim.diagnostic.severity.HINT]  = 'DiagnosticHint',
+    },
+  },
 })
-
-local open_floating_fallback = vim.lsp.util.open_floating_preview
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-  -- opts = opts or {}
-  opts.border = opts.border or vim.g.border_type
-  return open_floating_fallback(contents, syntax, opts, ...)
-end
-
-local open_in_location_list = function (options)
-    vim.fn.setloclist(0, {}, ' ', options)
-    vim.api.nvim_command('lopen')
-end
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(event)
@@ -47,6 +51,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 
     if client:supports_method('textDocument/completion') then
+      -- NOTE: To autocomplete with common written characters
+      -- local chars = {}
+      -- for i = 32, 126 do
+      --   table.insert(chars, string.char(i))
+      -- client.server_capabilities.completionProvider.triggerCharacters = chars
+      -- end
       vim.api.nvim_buf_set_keymap(event.buf, 'i', '<c-o>', '<c-x><c-o>', opts)
       vim.opt.completeopt = 'menuone,fuzzy,noselect'
       vim.lsp.completion.enable(true, event.data.client_id, event.buf, { autotrigger = true })
