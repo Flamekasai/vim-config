@@ -1,6 +1,8 @@
 vim.diagnostic.config({
   -- virtual_text = true,
-  virtual_lines = true,
+  virtual_lines = {
+      current_line = true
+  },
   underline = true,
   jump = {
     float = true
@@ -58,7 +60,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       -- client.server_capabilities.completionProvider.triggerCharacters = chars
       -- end
       vim.api.nvim_buf_set_keymap(event.buf, 'i', '<c-o>', '<c-x><c-o>', opts)
-      vim.opt.completeopt = 'menuone,fuzzy,noselect'
+      vim.bo[event.buf].completeopt = 'menuone,fuzzy,noselect'
       vim.lsp.completion.enable(true, event.data.client_id, event.buf, { autotrigger = true })
     end
   end,

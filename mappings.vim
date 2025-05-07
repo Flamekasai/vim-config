@@ -1,6 +1,6 @@
 nnoremap <leader>s          <cmd>write<cr>
 
-if !has('nvim') " This are default in neovim 0.11
+if !has('nvim-0.11') " This are default in neovim 0.11
     nnoremap Y                  y$
     nnoremap [a                 <cmd>previous<cr>
     nnoremap ]a                 <cmd>next<cr>
@@ -8,6 +8,13 @@ if !has('nvim') " This are default in neovim 0.11
     nnoremap ]A                 <cmd>last<cr>
     nnoremap <expr> [<space>    "m'" .. v:count1 .. "O<esc>``"
     nnoremap <expr> ]<space>    "m'" .. v:count1 .. "o<esc>``"
+else
+    " Unmap default nvim 0.11 lsp mappings
+    nunmap  gri
+    nunmap  grr
+    xunmap  gra
+    nunmap  gra
+    nunmap  grn
 endif
 
 nnoremap [e                 :move -2<cr>
