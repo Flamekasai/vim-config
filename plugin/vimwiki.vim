@@ -16,8 +16,12 @@ let s:notes["path_html"] = "/data/home/Documents/Notes/html"
 let s:notes["syntax"] = "markdown"
 let s:notes["ext"] = '.md'
 let s:notes["auto_export"] = 0
+let s:notes["auto_tags"] = 1
 let g:vimwiki_list = [s:notes]
 unlet s:notes
+
+let g:vimwiki_links_header = "Notas"
+let g:vimwiki_tags_header = "Tags"
 
 let g:vimwiki_listsyms = ' .oOx'
 let g:vimwiki_table_auto_fmt = 1

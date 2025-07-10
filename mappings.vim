@@ -20,8 +20,6 @@ endif
 nnoremap [e                 :move -2<cr>
 nnoremap ]e                 :move +1<cr>
 
-nnoremap n                  nzz
-nnoremap N                  Nzz
 nnoremap <c-k>              <cmd>cprevious<cr>zz
 nnoremap <c-j>              <cmd>cnext<cr>zz
 
