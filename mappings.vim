@@ -20,8 +20,8 @@ endif
 nnoremap [e                 :move -2<cr>
 nnoremap ]e                 :move +1<cr>
 
-nnoremap <c-k>              <cmd>cprevious<cr>zz
-nnoremap <c-j>              <cmd>cnext<cr>zz
+nnoremap <c-k>              <cmd>cprevious<cr>zvzz
+nnoremap <c-j>              <cmd>cnext<cr>zvzz
 
 nnoremap g/                 :vim /
 
