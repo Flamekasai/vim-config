@@ -70,21 +70,7 @@ local servers = {'clangd', 'tsserver', 'sourcekit', 'pylsp', 'intelephense', 'jd
 if vim.g.loaded_mason_lspconfig then
   servers = require('mason-lspconfig').get_installed_servers()
 end
-for _, server in pairs(servers) do
-  local config_table = {}
 
-  if server == 'clangd' then
-    config_table.cmd = { 'clangd', '--completion-style=detailed'}
-  elseif server == 'sourcekit' then
-    config_table.filetypes = {'swift'}
-  elseif server == 'emmet_ls' then
-    config_table.filetypes = {
-      "html",
-      "typescriptreact",
-      "javascriptreact",
-      "blade",
-      "eruby"
-    }
-  end
-  require('lspconfig')[server].setup(config_table)
+for _, server in pairs(servers) do
+    vim.lsp.enable(server)
 end
