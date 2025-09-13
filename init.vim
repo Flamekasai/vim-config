@@ -3,8 +3,6 @@ let vim_path = expand('<sfile>:p:h')
 " single, double, rounded, solid, shadow, none
 let border_type = 'rounded'
 
-" 'none', 'favorites', 'light', any other value == favoriteColors + randomColors
-let random_colors = 'none'
 let transparent_bg = v:false
 
 let mapleader = ' '

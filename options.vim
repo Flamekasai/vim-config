@@ -112,7 +112,8 @@ let g:pandoc#syntax#protect#codeblocks = 0
 " COLORSCHEMES AND SIGNS
 
 if exists('loaded_nvim_base16')
-    " let g:random_colors="all"
+    " Posible values found in autoload/utils.vim:80
+    command -complete=custom,utils#RandomColorsCompletion -nargs=? RandomColorscheme call utils#SetRandomColorscheme(<q-args>)
     colorscheme base16-gruvbox-dark-medium
 endif
 
