@@ -1,3 +1,7 @@
+if !exists('g:plugin_vimwiki_loaded')
+  finish
+endif
+
 let g:vimwiki_key_mappings = {}
 let g:vimwiki_key_mappings["all_maps"] = 1
 let g:vimwiki_key_mappings["global"] = 0

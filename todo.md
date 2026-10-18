@@ -1,1 +1,0 @@
-- [<space> and ]<space> repeat comment string if line is commented, avoid that.

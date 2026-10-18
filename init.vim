@@ -14,6 +14,7 @@ if has('nvim')
 else
     let s:config_path = $HOME .. '/.vim'
 endif
+
 let s:rtp = split(&runtimepath, ',')
 call filter(s:rtp, 'v:val !~  s:config_path')
 call insert(s:rtp, g:vim_path)
@@ -32,9 +33,14 @@ syntax on
 filetype plugin indent on
 
 if has('nvim')
-    lua require('flamekasai.plugins')
+    execute 'source ' .. g:vim_path .. '/plugins.lua'
+    execute 'source ' .. g:vim_path .. '/lsp.lua'
 endif
+execute 'source ' .. g:vim_path .. '/plugins.vim'
 
-execute 'source ' .. g:vim_path .. '/options.vim'
-execute 'source ' .. g:vim_path .. '/autocommands.vim'
-execute 'source ' .. g:vim_path .. '/mappings.vim'
+augroup Flamekasai
+    autocmd!
+    execute 'source ' .. g:vim_path .. '/options.vim'
+    execute 'source ' .. g:vim_path .. '/autocommands.vim'
+    execute 'source ' .. g:vim_path .. '/mappings.vim'
+augroup END

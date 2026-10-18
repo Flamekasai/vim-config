@@ -1,0 +1,29 @@
+{
+  "plugins": {
+    "base16": {
+      "rev": "20b38956ff17a7f72ee51b01fbc2638a376d063d",
+      "src": "https://github.com/tinted-theming/tinted-vim",
+      "version": "'main'"
+    },
+    "fugitive": {
+      "rev": "96c1009fcf8ce60161cc938d149dd5a66d570756",
+      "src": "https://github.com/tpope/vim-fugitive",
+      "version": "'v3.7'"
+    },
+    "lspconfigs": {
+      "rev": "4d363f93c3581b9212a24f7a830d7590b3f050af",
+      "src": "https://github.com/neovim/nvim-lspconfig",
+      "version": "'v2.12.0'"
+    },
+    "surround": {
+      "rev": "aeb933272e72617f7c4d35e1f003be16836b948d",
+      "src": "https://github.com/tpope/vim-surround",
+      "version": "'v2.2'"
+    },
+    "surround-repeat": {
+      "rev": "8106e142dfdc278ff3eaaadd7b362ad7949d4357",
+      "src": "https://github.com/tpope/vim-repeat",
+      "version": "'v1.2'"
+    }
+  }
+}

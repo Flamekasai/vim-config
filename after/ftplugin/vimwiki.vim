@@ -1,4 +1,8 @@
-let b:undo_ftplugin = "setlocal spell< formatoptions< textwidth< colorcolumn<"
+if exists("b:did_ftplugin")
+  finish
+endif
+
+let b:undo_ftplugin .= " | setlocal spell< formatoptions< textwidth< colorcolumn<"
 setlocal spell formatoptions-=o textwidth=72 colorcolumn=+1
 
 nnoremap <buffer> <unique> <leader>z 1z=

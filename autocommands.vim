@@ -1,12 +1,13 @@
-augroup FlamekasaiAutocommands
-    if has('nvim')
-        autocmd VimEnter,Colorscheme * lua require('flamekasai.utils').colorize_statusline()
-    endif
-    autocmd Colorscheme * call utils#ChangeHighlights()
-    autocmd BufWritePre * call utils#RemoveTrailingWhitespace()
+autocmd Colorscheme,Syntax * call utils#ChangeHighlights()
 
-    " Custom filetypes
-    autocmd BufRead,BufNewFile *.colors set filetype=colors
+autocmd BufWritePre * call utils#RemoveTrailingWhitespace()
 
-    autocmd FileType vimwiki set syntax=pandoc
-augroup END
+autocmd FileType vimwiki set syntax=pandoc
+
+" Custom filetypes
+autocmd BufRead,BufNewFile *.colors set filetype=colors
+
+if has('nvim')
+    autocmd LspAttach * call utils#OnLspChange(v:true)
+    autocmd LspDetach * call utils#OnLspChange(v:false)
+endif
