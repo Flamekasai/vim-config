@@ -70,6 +70,11 @@ function! utils#ChangeHighlights() abort
 
     highlight TrailingWhiteSpace guibg=#ff5555
 
+    if (match(g:colors_name, "base") != -1)
+        highlight! link User2 CurSearch
+        highlight! link User4 Search
+    endif
+
     if (g:transparent_bg == v:true)
         highlight Normal ctermbg=NONE guibg=NONE
     endif
