@@ -40,7 +40,7 @@ execute 'source ' .. g:vim_path .. '/plugins.vim'
 
 augroup Flamekasai
     autocmd!
-    execute 'source ' .. g:vim_path .. '/options.vim'
     execute 'source ' .. g:vim_path .. '/autocommands.vim'
+    execute 'source ' .. g:vim_path .. '/options.vim'
     execute 'source ' .. g:vim_path .. '/mappings.vim'
 augroup END

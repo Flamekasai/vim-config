@@ -59,20 +59,18 @@ endfunction
 
 " @Cleanup maybe this function is only needed for the transparent background
 function! utils#ChangeHighlights() abort
+    highlight! link DiagnosticFloatingError DiagnosticError
+    highlight! link DiagnosticFloatingWarn  DiagnosticWarn
+    highlight! link DiagnosticFloatingHint  DiagnosticHint
+    highlight! link DiagnosticFloatingInfo  DiagnosticInfo
+    highlight! link DiagnosticFloatingOk    DiagnosticOk
+
+    highlight! link NormalFloat Normal
+    highlight! link FloatBorder Normal
+
+    highlight TrailingWhiteSpace guibg=#ff5555
+
     if (g:transparent_bg == v:true)
         highlight Normal ctermbg=NONE guibg=NONE
     endif
-endfunction
-
-function! utils#OnLspChange(attached) abort
-    if (a:attached)
-        let l:command = "nnoremap <buffer> "
-    else
-        let l:command = "unmap <buffer> "
-    endif
-
-    execute l:command .. "[d" .. " " .. "<cmd>lua vim.diagnostic.jump({count=-1,float=true})<cr>"
-    execute l:command .. "]d" .. " " .. "<cmd>lua vim.diagnostic.jump({count=+1,float=true})<cr>"
-    execute l:command .. "cv" .. " " .. "<cmd>lua vim.lsp.buf.rename()<cr>"
-    execute l:command .. "<leader>ld" .. " " .. "<cmd>lua vim.diagnostic.setqflist()<cr>"
 endfunction

@@ -64,7 +64,6 @@ set selection=old " @Testing With this selection mode you cannot select the end 
 
 set undofile " @Testing Persist undo data between sessions
 autocmd Filetype * set formatoptions-=r formatoptions -=o
-set completeopt=menu,preview " @Testing test preview when lsp is configured, it has no effect on normal completions it seems
 set pumheight=5 " @Testing
 let &pumborder=&winborder
 set showmatch " @Testing
@@ -127,6 +126,7 @@ set signcolumn=yes
 " FILETYPE OPTIONS
 " ----------------
 
+let g:filetype_md = "pandoc"
 " If "conceallevel" is not 0, you can add this to show bold and underline
 " asterisks independently of conceallevel or you can check other categories
 " you can hide or show selectively.
@@ -139,4 +139,4 @@ let g:pandoc#syntax#codeblocks#embeds#langs = ["cpp", "sh", "cs"]
 " ----------------------
 
 command -complete=custom,utils#RandomColorsCompletion -nargs=? RandomColorscheme call utils#SetRandomColorscheme(<q-args>)
-colorscheme retrobox
+RandomColorscheme
